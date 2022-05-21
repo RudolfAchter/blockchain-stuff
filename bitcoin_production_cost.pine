@@ -1,0 +1,353 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © capriole_charles
+
+//@version=4
+study("Bitcoin Production Cost",overlay=true)
+
+// INPUTS
+
+p_og = input(0.05,"Ave. Electricity Cost $USD KWh (Pre June 2019)")
+p_china = input(0.04,"Ave. Electricity Cost $USD KWh (Pre China Exodus 2021")
+p_new = input(0.05,"Ave. Electricity Cost $USD KWh (Post May 2021")
+elec_pct = input(0.60,"% electricity to Total Mining Costs")
+plot_mp = input(true,"Plot BTC Miner Price (Close + Transaction Fee Revenue / BTC)")
+plot_tc = input(true,"Plot Production & Electricity Cost Curves")
+labels = input(false,"Plot Annual Profit Margin Labels?")
+
+use_f = input(false,"Inflation factor")
+f = input(0.06,"Post-Corona Inflation factor")
+
+// DATA
+
+fees = security("QUANDL:BCHAIN/TRFUS","D",close)
+
+elec_consumption() =>
+    // Cambridge Bitcoin Electricity Consumption Index (CBECI) - Bitcoin's global electricity consumption in TwH.
+    // NB: Uses MONTHLY averages of raw data from CBECI. TV script run-time is too slow with Daily/Weekly data here.
+    //     This requires manual updating once a month for ongoing accuracy.
+    
+    d = dayofmonth
+    m = month
+    y = year
+    
+    e = float(na)
+    e := d==1 and m==1 and y==2012? 0.0448897733333333 :
+     d==8 and m==1 and y==2012? 0.0467732066666667 :
+     d==22 and m==1 and y==2012? 0.0499167266666667 :
+     d==5 and m==2 and y==2012? 0.0516129533333333 :
+     d==19 and m==2 and y==2012? 0.0526943266666667 :
+     d==4 and m==3 and y==2012? 0.05538186 :
+     d==18 and m==3 and y==2012? 0.0580128533333333 :
+     d==1 and m==4 and y==2012? 0.0611542533333333 :
+     d==15 and m==4 and y==2012? 0.05900928 :
+     d==29 and m==4 and y==2012? 0.05795294 :
+     d==13 and m==5 and y==2012? 0.06452278 :
+     d==27 and m==5 and y==2012? 0.06054668 :
+     d==10 and m==6 and y==2012? 0.0604923266666667 :
+     d==24 and m==6 and y==2012? 0.06490944 :
+     d==8 and m==7 and y==2012? 0.0670409266666667 :
+     d==22 and m==7 and y==2012? 0.0712722266666667 :
+     d==5 and m==8 and y==2012? 0.0780710533333333 :
+     d==19 and m==8 and y==2012? 0.08622184 :
+     d==2 and m==9 and y==2012? 0.0957779533333333 :
+     d==16 and m==9 and y==2012? 0.105795213333333 :
+     d==30 and m==9 and y==2012? 0.113526666666667 :
+     d==14 and m==10 and y==2012? 0.114823266666667 :
+     d==28 and m==10 and y==2012? 0.121561133333333 :
+     d==11 and m==11 and y==2012? 0.128912466666667 :
+     d==25 and m==11 and y==2012? 0.1279656 :
+     d==9 and m==12 and y==2012? 0.132210866666667 :
+     d==23 and m==12 and y==2012? 0.1144392 :
+     d==6 and m==1 and y==2013? 0.120510733333333 :
+     d==20 and m==1 and y==2013? 0.115101733333333 :
+     d==3 and m==2 and y==2013? 0.117235733333333 :
+     d==17 and m==2 and y==2013? 0.103566966666667 :
+     d==3 and m==3 and y==2013? 0.109349686666667 :
+     d==17 and m==3 and y==2013? 0.124549266666667 :
+     d==31 and m==3 and y==2013? 0.172383133333333 :
+     d==14 and m==4 and y==2013? 0.213046733333333 :
+     d==28 and m==4 and y==2013? 0.241923066666667 :
+     d==12 and m==5 and y==2013? 0.275134666666667 :
+     d==26 and m==5 and y==2013? 0.306536266666667 :
+     d==9 and m==6 and y==2013? 0.394398933333333 :
+     d==23 and m==6 and y==2013? 0.4976452 :
+     d==7 and m==7 and y==2013? 0.582760133333333 :
+     d==21 and m==7 and y==2013? 0.7401676 :
+     d==4 and m==8 and y==2013? 0.908156133333333 :
+     d==18 and m==8 and y==2013? 1.28042666666667 :
+     d==1 and m==9 and y==2013? 0.534310466666667 :
+     d==15 and m==9 and y==2013? 0.391327333333333 :
+     d==29 and m==9 and y==2013? 0.5588032 :
+     d==13 and m==10 and y==2013? 0.764947933333333 :
+     d==27 and m==10 and y==2013? 1.3118052 :
+     d==10 and m==11 and y==2013? 1.91040266666667 :
+     d==24 and m==11 and y==2013? 2.39963266666667 :
+     d==8 and m==12 and y==2013? 2.99599333333333 :
+     d==22 and m==12 and y==2013? 4.11922 :
+     d==5 and m==1 and y==2014? 5.27489066666667 :
+     d==19 and m==1 and y==2014? 7.14739266666667 :
+     d==2 and m==2 and y==2014? 8.90992733333333 :
+     d==16 and m==2 and y==2014? 11.0466933333333 :
+     d==2 and m==3 and y==2014? 7.66129533333333 :
+     d==16 and m==3 and y==2014? 2.928136 :
+     d==30 and m==3 and y==2014? 3.55123333333333 :
+     d==13 and m==4 and y==2014? 4.35657733333333 :
+     d==27 and m==4 and y==2014? 5.25784666666667 :
+     d==11 and m==5 and y==2014? 5.83622733333333 :
+     d==25 and m==5 and y==2014? 6.94009533333333 :
+     d==8 and m==6 and y==2014? 7.97694666666667 :
+     d==22 and m==6 and y==2014? 9.47082666666667 :
+     d==6 and m==7 and y==2014? 10.1856406666667 :
+     d==20 and m==7 and y==2014? 6.81052933333333 :
+     d==3 and m==8 and y==2014? 7.12624 :
+     d==17 and m==8 and y==2014? 7.97746666666667 :
+     d==31 and m==8 and y==2014? 7.722336 :
+     d==14 and m==9 and y==2014? 1.62927266666667 :
+     d==28 and m==9 and y==2014? 1.79479733333333 :
+     d==12 and m==10 and y==2014? 1.85550666666667 :
+     d==26 and m==10 and y==2014? 1.89836 :
+     d==9 and m==11 and y==2014? 2.08068933333333 :
+     d==23 and m==11 and y==2014? 2.12267133333333 :
+     d==7 and m==12 and y==2014? 2.03810866666667 :
+     d==21 and m==12 and y==2014? 1.72866733333333 :
+     d==4 and m==1 and y==2015? 1.83967066666667 :
+     d==18 and m==1 and y==2015? 1.902684 :
+     d==1 and m==2 and y==2015? 1.85248266666667 :
+     d==15 and m==2 and y==2015? 1.959152 :
+     d==1 and m==3 and y==2015? 2.06469933333333 :
+     d==15 and m==3 and y==2015? 2.09730533333333 :
+     d==29 and m==3 and y==2015? 2.10092 :
+     d==12 and m==4 and y==2015? 2.14148066666667 :
+     d==26 and m==4 and y==2015? 2.11196933333333 :
+     d==10 and m==5 and y==2015? 2.078068 :
+     d==24 and m==5 and y==2015? 2.145618 :
+     d==7 and m==6 and y==2015? 2.09108066666667 :
+     d==21 and m==6 and y==2015? 2.194054 :
+     d==5 and m==7 and y==2015? 2.186602 :
+     d==19 and m==7 and y==2015? 2.267548 :
+     d==2 and m==8 and y==2015? 2.32644866666667 :
+     d==16 and m==8 and y==2015? 2.355268 :
+     d==30 and m==8 and y==2015? 2.40752866666667 :
+     d==13 and m==9 and y==2015? 2.56722266666667 :
+     d==27 and m==9 and y==2015? 2.59675 :
+     d==11 and m==10 and y==2015? 2.723812 :
+     d==25 and m==10 and y==2015? 2.71067066666667 :
+     d==8 and m==11 and y==2015? 2.85210933333333 :
+     d==22 and m==11 and y==2015? 3.03022866666667 :
+     d==6 and m==12 and y==2015? 3.39929466666667 :
+     d==20 and m==12 and y==2015? 3.98623133333333 :
+     d==3 and m==1 and y==2016? 4.50523 :
+     d==17 and m==1 and y==2016? 4.933306 :
+     d==31 and m==1 and y==2016? 5.44452133333333 :
+     d==14 and m==2 and y==2016? 6.76244066666667 :
+     d==28 and m==2 and y==2016? 6.95727866666667 :
+     d==13 and m==3 and y==2016? 7.16674333333333 :
+     d==27 and m==3 and y==2016? 7.24838533333333 :
+     d==10 and m==4 and y==2016? 7.59466 :
+     d==24 and m==4 and y==2016? 8.03744733333333 :
+     d==8 and m==5 and y==2016? 8.04669333333333 :
+     d==22 and m==5 and y==2016? 8.575128 :
+     d==5 and m==6 and y==2016? 8.75916066666667 :
+     d==19 and m==6 and y==2016? 9.00681933333333 :
+     d==3 and m==7 and y==2016? 9.36009866666667 :
+     d==17 and m==7 and y==2016? 9.46875666666667 :
+     d==31 and m==7 and y==2016? 8.01446666666667 :
+     d==14 and m==8 and y==2016? 7.53580333333333 :
+     d==28 and m==8 and y==2016? 7.733898 :
+     d==11 and m==9 and y==2016? 7.87172933333333 :
+     d==25 and m==9 and y==2016? 8.36815333333333 :
+     d==9 and m==10 and y==2016? 9.015172 :
+     d==23 and m==10 and y==2016? 8.90605 :
+     d==6 and m==11 and y==2016? 9.13996866666667 :
+     d==20 and m==11 and y==2016? 9.65543933333333 :
+     d==4 and m==12 and y==2016? 10.1403306666667 :
+     d==18 and m==12 and y==2016? 10.79038 :
+     d==1 and m==1 and y==2017? 11.3003666666667 :
+     d==15 and m==1 and y==2017? 12.10902 :
+     d==29 and m==1 and y==2017? 13.9971133333333 :
+     d==12 and m==2 and y==2017? 11.8909206666667 :
+     d==26 and m==2 and y==2017? 9.31708666666667 :
+     d==12 and m==3 and y==2017? 9.86065 :
+     d==26 and m==3 and y==2017? 10.3007733333333 :
+     d==9 and m==4 and y==2017? 7.24762 :
+     d==23 and m==4 and y==2017? 7.68320933333333 :
+     d==7 and m==5 and y==2017? 8.29340133333333 :
+     d==21 and m==5 and y==2017? 9.45574933333333 :
+     d==4 and m==6 and y==2017? 14.5437 :
+     d==18 and m==6 and y==2017? 16.2587 :
+     d==2 and m==7 and y==2017? 16.08918 :
+     d==16 and m==7 and y==2017? 17.9574866666667 :
+     d==30 and m==7 and y==2017? 14.9784533333333 :
+     d==13 and m==8 and y==2017? 14.0673133333333 :
+     d==27 and m==8 and y==2017? 17.6895533333333 :
+     d==10 and m==9 and y==2017? 18.6930666666667 :
+     d==24 and m==9 and y==2017? 20.69434 :
+     d==8 and m==10 and y==2017? 21.5257466666667 :
+     d==22 and m==10 and y==2017? 23.8291866666667 :
+     d==5 and m==11 and y==2017? 25.94404 :
+     d==19 and m==11 and y==2017? 24.5501666666667 :
+     d==3 and m==12 and y==2017? 28.0661066666667 :
+     d==17 and m==12 and y==2017? 31.0909466666667 :
+     d==31 and m==12 and y==2017? 33.61164 :
+     d==14 and m==1 and y==2018? 33.3194666666667 :
+     d==28 and m==1 and y==2018? 37.2621666666667 :
+     d==11 and m==2 and y==2018? 39.83868 :
+     d==25 and m==2 and y==2018? 34.0908333333333 :
+     d==11 and m==3 and y==2018? 36.35522 :
+     d==25 and m==3 and y==2018? 38.6891266666667 :
+     d==8 and m==4 and y==2018? 36.9834333333333 :
+     d==22 and m==4 and y==2018? 36.3653933333333 :
+     d==6 and m==5 and y==2018? 36.9741866666667 :
+     d==20 and m==5 and y==2018? 36.2525266666667 :
+     d==3 and m==6 and y==2018? 39.6266866666667 :
+     d==17 and m==6 and y==2018? 42.9442866666667 :
+     d==1 and m==7 and y==2018? 46.8299533333333 :
+     d==15 and m==7 and y==2018? 44.0931866666667 :
+     d==29 and m==7 and y==2018? 46.5117733333333 :
+     d==12 and m==8 and y==2018? 51.6115333333333 :
+     d==26 and m==8 and y==2018? 52.88186 :
+     d==9 and m==9 and y==2018? 53.53606 :
+     d==23 and m==9 and y==2018? 52.26566 :
+     d==7 and m==10 and y==2018? 54.2591266666667 :
+     d==21 and m==10 and y==2018? 49.32842 :
+     d==4 and m==11 and y==2018? 49.3347733333333 :
+     d==18 and m==11 and y==2018? 46.1241 :
+     d==2 and m==12 and y==2018? 38.5558133333333 :
+     d==16 and m==12 and y==2018? 30.9474466666667 :
+     d==30 and m==12 and y==2018? 33.21604 :
+     d==13 and m==1 and y==2019? 36.9950533333333 :
+     d==27 and m==1 and y==2019? 34.83958 :
+     d==10 and m==2 and y==2019? 35.0500933333333 :
+     d==24 and m==2 and y==2019? 35.4441 :
+     d==10 and m==3 and y==2019? 35.9794066666667 :
+     d==24 and m==3 and y==2019? 37.2053866666667 :
+     d==7 and m==4 and y==2019? 38.1241066666667 :
+     d==21 and m==4 and y==2019? 38.6097133333333 :
+     d==5 and m==5 and y==2019? 40.98594 :
+     d==19 and m==5 and y==2019? 41.5870866666667 :
+     d==2 and m==6 and y==2019? 45.8937066666667 :
+     d==16 and m==6 and y==2019? 46.9439933333333 :
+     d==30 and m==6 and y==2019? 49.2081066666667 :
+     d==14 and m==7 and y==2019? 56.2514066666667 :
+     d==28 and m==7 and y==2019? 56.63712 :
+     d==11 and m==8 and y==2019? 60.3306466666667 :
+     d==25 and m==8 and y==2019? 60.5889466666667 :
+     d==8 and m==9 and y==2019? 64.10794 :
+     d==22 and m==9 and y==2019? 70.9877866666667 :
+     d==6 and m==10 and y==2019? 71.6044066666666 :
+     d==20 and m==10 and y==2019? 69.7132133333333 :
+     d==3 and m==11 and y==2019? 68.3367666666667 :
+     d==17 and m==11 and y==2019? 67.1753266666667 :
+     d==1 and m==12 and y==2019? 65.7259666666667 :
+     d==15 and m==12 and y==2019? 62.8617666666667 :
+     d==29 and m==12 and y==2019? 62.7077733333333 :
+     d==12 and m==1 and y==2020? 68.22666 :
+     d==26 and m==1 and y==2020? 72.07338 :
+     d==9 and m==2 and y==2020? 74.5989666666667 :
+     d==23 and m==2 and y==2020? 76.2619933333333 :
+     d==8 and m==3 and y==2020? 79.4506866666667 :
+     d==22 and m==3 and y==2020? 68.7661266666667 :
+     d==5 and m==4 and y==2020? 54.9826466666667 :
+     d==19 and m==4 and y==2020? 66.4887 :
+     d==3 and m==5 and y==2020? 67.6403466666667 :
+     d==17 and m==5 and y==2020? 73.33354 :
+     d==31 and m==5 and y==2020? 52.1350333333333 :
+     d==14 and m==6 and y==2020? 53.85798 :
+     d==28 and m==6 and y==2020? 54.2859733333333 :
+     d==12 and m==7 and y==2020? 56.9790133333333 :
+     d==26 and m==7 and y==2020? 54.9029866666667 :
+     d==9 and m==8 and y==2020? 59.41582 :
+     d==23 and m==8 and y==2020? 63.73672 :
+     d==6 and m==9 and y==2020? 62.8713933333333 :
+     d==20 and m==9 and y==2020? 65.73894 :
+     d==4 and m==10 and y==2020? 65.8654733333333 :
+     d==18 and m==10 and y==2020? 64.7199866666667 :
+     d==1 and m==11 and y==2020? 60.9787333333333 :
+     d==15 and m==11 and y==2020? 65.9051533333333 :
+     d==29 and m==11 and y==2020? 80.4638533333333 :
+     d==13 and m==12 and y==2020? 81.26956 :
+     d==27 and m==12 and y==2020? 82.89574 :
+     d==10 and m==1 and y==2021? 98.42008 :
+     d==24 and m==1 and y==2021? 106.3038 :
+     d==7 and m==2 and y==2021? 106.528133333333 :
+     d==21 and m==2 and y==2021? 110.938466666667 :
+     d==7 and m==3 and y==2021? 111.518733333333 :
+     d==21 and m==3 and y==2021? 113.947466666667 :
+     d==4 and m==4 and y==2021? 119.531533333333 :
+     d==18 and m==4 and y==2021? 120.342066666667 :
+     d==2 and m==5 and y==2021? 108.69154 :
+     d==16 and m==5 and y==2021? 127.397466666667 :
+     d==30 and m==5 and y==2021? 109.282866666667 :
+     d==13 and m==6 and y==2021? 102.673546666667 :
+     d==27 and m==6 and y==2021? 81.9444333333333 :
+     d==11 and m==7 and y==2021? 63.6538866666667 :
+     d==25 and m==7 and y==2021? 69.75506 :
+     d==8 and m==8 and y==2021? 76.5859266666667 :
+     d==22 and m==8 and y==2021? 84.7868666666667 :
+     d==5 and m==9 and y==2021? 92.0367733333333 :
+     d==19 and m==9 and y==2021? 97.33628 :
+     d==3 and m==10 and y==2021? 99.3566133333333 :
+     d==17 and m==10 and y==2021? 102.828706666667 :
+     d==31 and m==10 and y==2021? 109.406533333333 :
+     d==14 and m==11 and y==2021? 115.639 :
+     d==28 and m==11 and y==2021? 116.424333333333 :
+     d==12 and m==12 and y==2021? 120.5624 :
+     d==26 and m==12 and y==2021? 120.825266666667 :
+     d==9 and m==1 and y==2022? 122.812266666667 :
+     d==23 and m==1 and y==2022? 130.533733333333 :
+     d==6 and m==2 and y==2022? 129.958733333333 :
+     d==20 and m==2 and y==2022? 135.468666666667 :
+     d==6 and m==3 and y==2022? 133.200466666667 : na
+
+    e
+
+btc_mined_per_day() =>
+    blocks_per_day = 144
+    block_reward = time < timestamp(2012,11,28,0,0) ? 50 :
+         time < timestamp(2016,7,9,0,0) ? 25 :
+         time < timestamp(2020,5,11,19,0) ? 12.5 :
+         time < timestamp(2024,5,12,0,0) ? 6.25 : 3.125 // 2024 estimate
+    btc_per_day = blocks_per_day*block_reward
+    btc_per_day    
+
+// CALCULATIONS
+
+miner_price = close + fees/btc_mined_per_day()
+
+elec = float(na)
+elec := na(elec_consumption()) ? elec[1] : elec_consumption()
+
+p =  time < timestamp(2019,6,30,0,0) ? p_og : 
+     time < timestamp(2021,4,20,0,0) ? p_china : p_new 
+    
+btc_elec_cost = float(na)
+btc_elec_cost := (elec/365.25)*pow(10,9) / btc_mined_per_day() * p //convert: --> days --> KwH --> Per BTC --> * Price/KwH
+
+b = barssince(time == timestamp(2020, 3, 1, 00, 00))
+
+btc_elec_cost := (use_f and time >= timestamp(2020, 3, 1, 00, 00) ? pow((1+f),b/365) : 1.0)*btc_elec_cost
+
+total_cost = btc_elec_cost/elec_pct   
+
+margin = ((miner_price/total_cost)-1.0)*100.0
+profit_margin = round(sma(margin,365))
+m = ''
+m := profit_margin > 0 ? "+" : ''
+
+// PLOT
+
+a = plot(plot_tc ? btc_elec_cost : na,color=color.red,linewidth=2,title=" Electricity")
+tc = plot(plot_tc ? total_cost : na,color=color.purple,linewidth=1,title=" Total")
+fill(a,tc,color=color.red,transp=70)
+
+mp = plot(plot_mp ? miner_price : close,color=(plot_mp ? color.green : na),linewidth=2,title="Price")
+
+clr = ((plot_mp ? miner_price : close) < total_cost) ? color.red : na
+fill(mp,tc,color=clr,transp=20)
+
+// LABELS
+
+if labels and (barstate.islast or (dayofmonth ==1 and month ==1) and profit_margin)
+    label.new(bar_index, btc_elec_cost, style=label.style_labelup,
+         text="Margin (p.a.)\n" + m + tostring(profit_margin) +"%",
+         textcolor=color.white,color=color.green)
