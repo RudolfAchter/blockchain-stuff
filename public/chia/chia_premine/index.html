@@ -579,7 +579,7 @@
 <p>In Chia Blockchain you could theoretically have a new address for each and every transaction, which provides pseudo-anonymity on the public blockchain. Transactions cannot easily be matched to a single identity. You CAN be auditet with <a href="https://docs.chia.net/docs/09keys/keys-and-signatures/#non-observer-vs-observer-keys">Observer Keys</a>, but you can decide who is allowed to audit you. So wallets are not publically auditable.</p>
 <h3 id="but-you-can-follow-the-coins">But you can follow the coins</h3>
 <p>One thing you CAN follow perfectly, are the coins itself. Each coin created has a parent. You can follow parents ultimately until "Genesis", the start of the whole blockchain. When a coin is "spent" it will be destroyed and split into children with new values transferred to the new destination (which also can be your own wallet. Think of "change" when you deal with cash.). You can perfectly trace on blockchain which coins are spent and which are not. The exact premine amount is divided into 4 coins which stay there unspent since <a href="https://en.wikipedia.org/wiki/Star_Wars_Day">May 4th 2021</a> (really? Exactly 10th anniversary of Star Wars Day? 👍)</p>
-<p>these (shortened) hashed are linked to <xchscan.com>. You can check "Parent Coin" and "Child Coins" for each transaction.</p>
+<p>these (shortened) hashed are linked to <a href="https://xchscan.com">xchscan.com</a>. You can check "Parent Coin" and "Child Coins" for each transaction. As long these coins stay "unspent" and have no childs, they really were not touched</p>
 <div class="mermaid">flowchart TD
   subgraph sub01["Chia Premine Coins"]
     subgraph padding01[ ]
@@ -591,18 +591,18 @@
 
       0xdce5 --child--&gt; 0xeac9 &amp; 0x8225
 
-        0xeac9["&lt;a href='https://xchscan.com/txns/0xeac9be36298887f751fa7f7367a27ab12c72360ebf7a78ee4fcfb96db121a3b7'&gt;0xeac9&lt;/a&gt;&lt;br&gt;1.312.500 XCH"]
+        0xeac9["&lt;a href='https://xchscan.com/txns/0xeac9be36298887f751fa7f7367a27ab12c72360ebf7a78ee4fcfb96db121a3b7'&gt;0xeac9&lt;/a&gt;&lt;br&gt;1.312.500 XCH&lt;br&gt;May 4th 2021"]
 
-        0x8225["&lt;a href='https://xchscan.com/txns/0x8225b3a9538238c170bbd79632604e075f7357621bbd846f50b1aa6d6cfa95e0'&gt;0x8225&lt;/a&gt;&lt;br&gt;1.312.500 XCH"]
+        0x8225["&lt;a href='https://xchscan.com/txns/0x8225b3a9538238c170bbd79632604e075f7357621bbd846f50b1aa6d6cfa95e0'&gt;0x8225&lt;/a&gt;&lt;br&gt;1.312.500 XCH&lt;br&gt;May 4th 2021"]
 
 
       0x1fd6["&lt;a href='https://xchscan.com/txns/0x1fd60c070e821d785b65e10e5135e52d12c8f4d902a506f48bc1c5268b7bb45b'&gt;0x1fd6&lt;/a&gt;&lt;br&gt;18.375.000 XCH"]
 
       0x1fd6 --child--&gt; 0x4d00 &amp; 0xd7a8
 
-        0x4d00["&lt;a href='https://xchscan.com/txns/0x4d0012503cb0b31947ed582881e59d334b667a0b4c96ac86c4f540c850055a22'&gt;0x4d00&lt;/a&gt;&lt;br&gt;9.187.500 XCH"]
+        0x4d00["&lt;a href='https://xchscan.com/txns/0x4d0012503cb0b31947ed582881e59d334b667a0b4c96ac86c4f540c850055a22'&gt;0x4d00&lt;/a&gt;&lt;br&gt;9.187.500 XCH&lt;br&gt;May 4th 2021"]
 
-        0xd7a8["&lt;a href='https://xchscan.com/txns/0xd7a81eece6b0450c9eaf3b3a9cdbff5bde0f1e51f1f18fcf50cc533296cb04b6'&gt;0xd7a8&lt;/a&gt;&lt;br&gt;9.187.500 XCH"]
+        0xd7a8["&lt;a href='https://xchscan.com/txns/0xd7a81eece6b0450c9eaf3b3a9cdbff5bde0f1e51f1f18fcf50cc533296cb04b6'&gt;0xd7a8&lt;/a&gt;&lt;br&gt;9.187.500 XCH&lt;br&gt;May 4th 2021"]
 
     end
   end
