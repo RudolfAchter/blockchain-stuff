@@ -11,7 +11,7 @@ In Chia Blockchain you could theoretically have a new address for each and every
 
 One thing you CAN follow perfectly, are the coins itself. Each coin created has a parent. You can follow parents ultimately until "Genesis", the start of the whole blockchain. When a coin is "spent" it will be destroyed and split into children with new values transferred to the new destination (which also can be your own wallet. Think of "change" when you deal with cash.). You can perfectly trace on blockchain which coins are spent and which are not. The exact premine amount is divided into 4 coins which stay there unspent since [May 4th 2021](https://en.wikipedia.org/wiki/Star_Wars_Day) (really? Exactly 10th anniversary of Star Wars Day? 👍)
 
-these (shortened) hashed are linked to <xchscan.com>. You can check "Parent Coin" and "Child Coins" for each transaction.
+these (shortened) hashed are linked to [xchscan.com](https://xchscan.com). You can check "Parent Coin" and "Child Coins" for each transaction. As long these coins stay "unspent" and have no childs, they really were not touched
 
 ```mermaid
 flowchart TD
@@ -25,18 +25,18 @@ flowchart TD
 
       0xdce5 --child--> 0xeac9 & 0x8225
 
-        0xeac9["<a href='https://xchscan.com/txns/0xeac9be36298887f751fa7f7367a27ab12c72360ebf7a78ee4fcfb96db121a3b7'>0xeac9</a><br>1.312.500 XCH"]
+        0xeac9["<a href='https://xchscan.com/txns/0xeac9be36298887f751fa7f7367a27ab12c72360ebf7a78ee4fcfb96db121a3b7'>0xeac9</a><br>1.312.500 XCH<br>May 4th 2021"]
         
-        0x8225["<a href='https://xchscan.com/txns/0x8225b3a9538238c170bbd79632604e075f7357621bbd846f50b1aa6d6cfa95e0'>0x8225</a><br>1.312.500 XCH"]
+        0x8225["<a href='https://xchscan.com/txns/0x8225b3a9538238c170bbd79632604e075f7357621bbd846f50b1aa6d6cfa95e0'>0x8225</a><br>1.312.500 XCH<br>May 4th 2021"]
 
 
       0x1fd6["<a href='https://xchscan.com/txns/0x1fd60c070e821d785b65e10e5135e52d12c8f4d902a506f48bc1c5268b7bb45b'>0x1fd6</a><br>18.375.000 XCH"]
 
       0x1fd6 --child--> 0x4d00 & 0xd7a8
 
-        0x4d00["<a href='https://xchscan.com/txns/0x4d0012503cb0b31947ed582881e59d334b667a0b4c96ac86c4f540c850055a22'>0x4d00</a><br>9.187.500 XCH"]
+        0x4d00["<a href='https://xchscan.com/txns/0x4d0012503cb0b31947ed582881e59d334b667a0b4c96ac86c4f540c850055a22'>0x4d00</a><br>9.187.500 XCH<br>May 4th 2021"]
         
-        0xd7a8["<a href='https://xchscan.com/txns/0xd7a81eece6b0450c9eaf3b3a9cdbff5bde0f1e51f1f18fcf50cc533296cb04b6'>0xd7a8</a><br>9.187.500 XCH"]
+        0xd7a8["<a href='https://xchscan.com/txns/0xd7a81eece6b0450c9eaf3b3a9cdbff5bde0f1e51f1f18fcf50cc533296cb04b6'>0xd7a8</a><br>9.187.500 XCH<br>May 4th 2021"]
 
     end
   end
