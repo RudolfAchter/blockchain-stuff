@@ -1,0 +1,31 @@
+site_name: Blockchain Stuff
+site_url: https://rudolfachter.github.io/blockchain-stuff/public
+site_dir: public
+theme: material
+extra_css:
+  - "css/extra.css"
+
+markdown_extensions:
+  - toc
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        # Mermaid diagrams
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
+extra_javascript:
+  - https://unpkg.com/mermaid@8.13.10/dist/mermaid.min.js
+
+plugins:
+  - search:
+  - mkdocs-video:
+      css_style:
+        width: "1496px"
+        height: "841px"
+
+

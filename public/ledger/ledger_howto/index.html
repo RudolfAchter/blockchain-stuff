@@ -1,0 +1,762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://rudolfachter.github.io/blockchain-stuff/public/ledger/ledger_howto/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.1">
+    
+    
+      
+        <title>Ledger Hardware Wallet HowTo - Blockchain Stuff</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e8d9bf0c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ledger-hardware-wallet-howto" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Blockchain Stuff" class="md-header__button md-logo" aria-label="Blockchain Stuff" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blockchain Stuff
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ledger Hardware Wallet HowTo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Blockchain Stuff" class="md-nav__button md-logo" aria-label="Blockchain Stuff" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Blockchain Stuff
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Chia
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chia" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Chia
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chia/chia_premine/" class="md-nav__link">
+        Chia Premine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chia/chia_quickstart/" class="md-nav__link">
+        Chia Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Ethereum
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ethereum" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ethereum/zksync_layer2/" class="md-nav__link">
+        ZKSync als Layer2 Lösung für Storj Ethereum
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Ledger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ledger" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Ledger
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ledger Hardware Wallet HowTo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ledger Hardware Wallet HowTo
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notfall-wiederherstellung-mit-software-wallet" class="md-nav__link">
+    Notfall Wiederherstellung mit Software Wallet
+  </a>
+  
+    <nav class="md-nav" aria-label="Notfall Wiederherstellung mit Software Wallet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technischer-hintergrund" class="md-nav__link">
+    Technischer Hintergrund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notfall-wiederherstellung-wenn-kein-hardware-ledger-zur-hand" class="md-nav__link">
+    Notfall Wiederherstellung wenn kein Hardware Ledger zur Hand
+  </a>
+  
+    <nav class="md-nav" aria-label="Notfall Wiederherstellung wenn kein Hardware Ledger zur Hand">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitcoin" class="md-nav__link">
+    Bitcoin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethereum-und-evm-kompatible-chains" class="md-nav__link">
+    Ethereum und EVM kompatible Chains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Spacemesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spacemesh" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spacemesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spacemesh/" class="md-nav__link">
+        Spacemesh
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Weltwirtschaft
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Weltwirtschaft" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Weltwirtschaft
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../weltwirtschaft/anchor_crash_und_bitcoin/" class="md-nav__link">
+        Anchor crash und bitcoin
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notfall-wiederherstellung-mit-software-wallet" class="md-nav__link">
+    Notfall Wiederherstellung mit Software Wallet
+  </a>
+  
+    <nav class="md-nav" aria-label="Notfall Wiederherstellung mit Software Wallet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technischer-hintergrund" class="md-nav__link">
+    Technischer Hintergrund
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notfall-wiederherstellung-wenn-kein-hardware-ledger-zur-hand" class="md-nav__link">
+    Notfall Wiederherstellung wenn kein Hardware Ledger zur Hand
+  </a>
+  
+    <nav class="md-nav" aria-label="Notfall Wiederherstellung wenn kein Hardware Ledger zur Hand">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitcoin" class="md-nav__link">
+    Bitcoin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethereum-und-evm-kompatible-chains" class="md-nav__link">
+    Ethereum und EVM kompatible Chains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="ledger-hardware-wallet-howto">Ledger Hardware Wallet HowTo</h1>
+<h2 id="notfall-wiederherstellung-mit-software-wallet">Notfall Wiederherstellung mit Software Wallet</h2>
+<p>Das folgende sind Notfall Prozeduren für Worst Case Szenarien. Z.B. 
+- dein Ledger wurde geklaut, du musst deine Coins in Sicherheit bringen bevor der Dieb den PIN des Ledgers knacken kann. Du hast keinen zweiten Ledger zur Hand
+- Dein alter Ledger ist defekt. Es gibt keinen neuen Ledger zu kaufen oder du willst auf einen anderen Hersteller umsteigen</p>
+<p>Auch wenn du deinen Ledger nicht mehr hast. Dein Backup Seed und die richtige Software sollten alles sein was du brauchst. Wenn du mit einer Notfall Methode wieder Zugriff auf deine Coins erlangt hast solltest du deine Coins <strong>sofort auf eine andere sichere Wallet überweisen</strong></p>
+<p>Ledger arbeitet mit standartisierten Seed Passphrases daher ist eine Wiederherstellung der Accounts Herstellerübergreifend auf anderen Hardware- als auch Software Wallets möglich.</p>
+<ul>
+<li><a href="https://support.ledger.com/hc/en-us/articles/4404388633489-Export-your-accounts?docs=true">Ledger - EXPORT YOUR ACCOUNTS</a></li>
+</ul>
+<h3 id="technischer-hintergrund">Technischer Hintergrund</h3>
+<p>Wenn eine Wallet erstellt wird wird eine zufällige "Mnemonic Phrase" erstellt. Das sind 12 oder 24 Wörter aus denen alle weiteren private Keys generiert werden. Ledger verwendet einen Seed nach "BIP39" Standard.
+- <a href="https://en.bitcoin.it/wiki/Seed_phrase">BIP39 Seed Standard</a></p>
+<p>BIP39 scheint nicht perfekt zu sein weswegen sich im Falle von Bitcoin die Entwickler der "Electrum" Wallet für einen eigenen Standard entschieden haben
+- <a href="https://electrum.readthedocs.io/en/latest/seedphrase.html">Electrum Seed Version System</a></p>
+<p>Auszug aus der Electrum Doku</p>
+<blockquote>
+<p>BIP39 was introduced two years after Electrum. BIP39 seeds include a checksum, in order to help users figure out typing errors. However, BIP39 suffers the same shortcomings as early Electrum seed phrases:</p>
+<ul>
+<li>A fixed wordlist is still required. Following our recommendation, BIP39 authors decided to derive keys and addresses in a way that does not depend on the wordlist. However, BIP39 still requires the wordlist in order to compute its checksum, which is plainly inconsistent, and defeats the purpose of our recommendation. This problem is exacerbated by the fact that BIP39 proposes to create one wordlist per language. This threatens the portability of BIP39 seed phrases.</li>
+<li>BIP39 seed phrases do not include a version number. This means that software should always know how to generate keys and addresses. BIP43 suggests that wallet software will try various existing derivation schemes within the BIP32 framework. This is extremely inefficient and rests on the assumption that future wallets will support all previously accepted derivation methods. If, in the future, a wallet developer decides not to implement a particular derivation method because it is deprecated, then the software will not be able to detect that the corresponding seed phrases are not supported, and it will return an empty wallet instead. This threatens users funds.</li>
+</ul>
+</blockquote>
+<p>Ledger arbeitet jedenfalls nach dem BIP39 Standard. Keys werden aus dem initialen Key erstellt. <strong>Das einzige was zufällig ist, ist der initiale Seed</strong></p>
+<ul>
+<li>Seed (BIP39)</li>
+<li>Ledger Apps<ul>
+<li>Bitcoin App</li>
+<li>Bitcoin privKey 1</li>
+<li>Bitcoin privKey 2</li>
+<li>Ethereum App (auch für EVM kompatible Chains)</li>
+<li>Ethereum (oder Cronos) privKey 1</li>
+<li>Ethereum (oder andere EVM kompatible) privKey2</li>
+</ul>
+</li>
+</ul>
+<h3 id="notfall-wiederherstellung-wenn-kein-hardware-ledger-zur-hand">Notfall Wiederherstellung wenn kein Hardware Ledger zur Hand</h3>
+<p>Die folgenden Dinge habe ich mit einem temporären Seed ausprobiert. Auf diesen Seed wurden keine Coins transferriert. Der Seed wird gelöscht und das verwendete Ledger wird auf Werkseinstellungen zurückgesetzt</p>
+<h4 id="bitcoin">Bitcoin</h4>
+<p>Ein beliebtes OpenSource Wallet für Bitcoin ist <a href="https://electrum.org/">Electrum</a>. Electrum enthält die notwendige Software damit du mit deinem Seed wieder auf deine Bitcoins zugreifen kannst</p>
+<p>Für Bitcoin Adressen gibt es verschiedene Adress Standard die man unterscheiden muss
+- legacy (p2pkh)
+- Segwit (p2sh-segwit) oder (p2wpkh-p2sh)
+- Native Segwit (p2wpkh)</p>
+<p><img alt="" src="../2022-04-15-15-13-06.png" /></p>
+<p>Standardmäßig generiert Ledger Live native segwit Adresen</p>
+<p><img alt="" src="../2022-04-15-15-41-17.png" /></p>
+<p>Ob das stimmt was ich gemacht habe überprüfe ich indem ich prüfe ob die gleichen Adressen generiert werden.</p>
+<p><strong>Ledger Live Bitcoin</strong></p>
+<ol>
+<li>bc1qan88lzyxvh2kghncsq9kpnwxcl69hgc3axtzk9</li>
+</ol>
+<p>Ledger Live kann scheinbar keine zweite Adresse generieren. Der Native Segwit Standard würde das aber hergeben</p>
+<p><strong>Electrum Bitcoin</strong></p>
+<ol>
+<li>bc1qan88lzyxvh2kghncsq9kpnwxcl69hgc3axtzk9</li>
+<li>bc1qkskqt6ngjefwqfexpwkm7jmpemaxk5z4u7p2lz</li>
+</ol>
+<p>Electrum kann zur Verschleierung von Transaktionen mehrere public Adressen generieren. Die erste Adresse stimmt überein. Also alles gut!
+Wenn Electrum nun auch noch Ledger als Hardware nutzen könnte dann wär das noch besser. Aber das ist eine andere Geschichte.</p>
+<h4 id="ethereum-und-evm-kompatible-chains">Ethereum und EVM kompatible Chains</h4>
+<p>Ethereum ist wegen seiner Programmierbarkeit mit SmartContracts DER Wahnsinn für DeFi (Decentralized Finance geworden). Es gibt dutzende Chains die alle auf der Ethereum virtual Machine aufbauen und alle mit den gleichen Keys kompatibel sind</p>
+<ul>
+<li><a href="https://defillama.com/chains/EVM">Die Top 10 der größten EVM Chains laut DefiLlama</a></li>
+<li>Ethereum (ETH) - ERC20</li>
+<li>Binance Smart Chain (BNB) - BEP20</li>
+<li>Avalanche (AVAX)</li>
+<li>Fantom (FTM)</li>
+<li>Polygon (MATIC)</li>
+<li>Cronos (CRO)</li>
+<li>Arbitrum</li>
+<li>Klaytn (KLAY)</li>
+<li>Aurora (AURORA)</li>
+<li>Harmony (ONE)</li>
+</ul>
+<p>Alle diese Chains können theoretisch mit einem einzigen Ehtereum private Key bespaßt werden. Metamask macht es vor. Wenn man sich mit Metamask mit einer anderen EVM Chain verbindet wird der aktuell vorhandene private Key einfach weiterverwendet.</p>
+<p>In Metamask kann der Seed von Ledger einfach als "24 Word Phrase" importiert werden</p>
+<p><img alt="" src="../2022-04-15-16-32-25.png" /></p>
+<p><strong>Ledger Live Ethereum</strong></p>
+<ol>
+<li>0x0eDAE1b5feD047e2716cF96A665aDc36e0cD9B5D</li>
+</ol>
+<p><strong>Metamask</strong></p>
+<ol>
+<li>0x0eDAE1b5feD047e2716cF96A665aDc36e0cD9B5D</li>
+</ol>
+<p>Auch wieder alles gut.
+Diese Adresse ist dann für alle EVM kompatiblen Chains gültig (siehe oben)</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../ethereum/zksync_layer2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ZKSync als Layer2 Lösung für Storj Ethereum" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              ZKSync als Layer2 Lösung für Storj Ethereum
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../spacemesh/" class="md-footer__link md-footer__link--next" aria-label="Next: Spacemesh" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Spacemesh
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8aa65030.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.13.10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

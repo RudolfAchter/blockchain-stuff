@@ -1,0 +1,1126 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://rudolfachter.github.io/blockchain-stuff/public/chia/chia_quickstart/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.1">
+    
+    
+      
+        <title>Chia Quickstart - Blockchain Stuff</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e8d9bf0c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chia-quickstart" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Blockchain Stuff" class="md-header__button md-logo" aria-label="Blockchain Stuff" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blockchain Stuff
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chia Quickstart
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Blockchain Stuff" class="md-nav__button md-logo" aria-label="Blockchain Stuff" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Blockchain Stuff
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Chia
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chia" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Chia
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chia_premine/" class="md-nav__link">
+        Chia Premine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chia Quickstart
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Chia Quickstart
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uberblick" class="md-nav__link">
+    Überblick
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chia-auf-der-commandline" class="md-nav__link">
+    Chia auf der CommandLine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    User
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-via-source-code" class="md-nav__link">
+    Installation via Source Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-via-debian-paket" class="md-nav__link">
+    Installation via Debian Paket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verwendung-des-clients" class="md-nav__link">
+    Verwendung des Clients
+  </a>
+  
+    <nav class="md-nav" aria-label="Verwendung des Clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wenn-uber-paketmanager-installiert" class="md-nav__link">
+    Wenn über Paketmanager installiert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wenn-uber-sourcecode-installiert" class="md-nav__link">
+    Wenn über Sourcecode Installiert
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialisierung" class="md-nav__link">
+    Initialisierung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erstellen-eines-private-keys" class="md-nav__link">
+    Erstellen eines private Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oder-importieren-eines-private-keys" class="md-nav__link">
+    Oder importieren eines private Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starten-des-farmers" class="md-nav__link">
+    Starten des Farmers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pool-oder-nicht-pool" class="md-nav__link">
+    Pool oder Nicht Pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotten-der-files-fur-chia" class="md-nav__link">
+    Plotten der Files für Chia
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressourcen-zum-plotten" class="md-nav__link">
+    Ressourcen zum Plotten
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-wird-geplottet" class="md-nav__link">
+    So wird geplottet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinzufugen-von-plots-zum-farmer" class="md-nav__link">
+    Hinzufügen von Plots zum Farmer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prufen-der-plots-auf-gultigkeit" class="md-nav__link">
+    Prüfen der Plots auf Gültigkeit
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Ethereum
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ethereum" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ethereum/zksync_layer2/" class="md-nav__link">
+        ZKSync als Layer2 Lösung für Storj Ethereum
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Ledger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ledger" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Ledger
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ledger/ledger_howto/" class="md-nav__link">
+        Ledger Hardware Wallet HowTo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Spacemesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spacemesh" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spacemesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spacemesh/" class="md-nav__link">
+        Spacemesh
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Weltwirtschaft
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Weltwirtschaft" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Weltwirtschaft
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../weltwirtschaft/anchor_crash_und_bitcoin/" class="md-nav__link">
+        Anchor crash und bitcoin
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uberblick" class="md-nav__link">
+    Überblick
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chia-auf-der-commandline" class="md-nav__link">
+    Chia auf der CommandLine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    User
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-via-source-code" class="md-nav__link">
+    Installation via Source Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-via-debian-paket" class="md-nav__link">
+    Installation via Debian Paket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verwendung-des-clients" class="md-nav__link">
+    Verwendung des Clients
+  </a>
+  
+    <nav class="md-nav" aria-label="Verwendung des Clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wenn-uber-paketmanager-installiert" class="md-nav__link">
+    Wenn über Paketmanager installiert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wenn-uber-sourcecode-installiert" class="md-nav__link">
+    Wenn über Sourcecode Installiert
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialisierung" class="md-nav__link">
+    Initialisierung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erstellen-eines-private-keys" class="md-nav__link">
+    Erstellen eines private Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oder-importieren-eines-private-keys" class="md-nav__link">
+    Oder importieren eines private Keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starten-des-farmers" class="md-nav__link">
+    Starten des Farmers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pool-oder-nicht-pool" class="md-nav__link">
+    Pool oder Nicht Pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotten-der-files-fur-chia" class="md-nav__link">
+    Plotten der Files für Chia
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressourcen-zum-plotten" class="md-nav__link">
+    Ressourcen zum Plotten
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-wird-geplottet" class="md-nav__link">
+    So wird geplottet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinzufugen-von-plots-zum-farmer" class="md-nav__link">
+    Hinzufügen von Plots zum Farmer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prufen-der-plots-auf-gultigkeit" class="md-nav__link">
+    Prüfen der Plots auf Gültigkeit
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="chia-quickstart">Chia Quickstart</h1>
+<h2 id="uberblick">Überblick</h2>
+<p>Es ist ein einfacher Grundsatz beim Chia Farmen zu verfolgen.
+- Du brauchst temporär SCHNELLEN Speicher zum Plotten (NVME / SSD / Ramdisk) und CPU Power (Quad Core 3 Ghz wär schon gut)
+  - Du kannst alle Rechner die du temporär findest zum Plotten benutzen :-) -&gt; die Plotter bekommen nur Public Keys
+- Du brauchst lange Zeit (Jahre) GROSSEN Speicher zum Farmen (HDD 15 TB)</p>
+<p>Die folgende Grafik zeigt, wie eine Chia Farm skaliert werden kann.</p>
+<p><img alt="Chia Design" src="../chia_design.drawio.svg" /></p>
+<p>Die Plotter sind temporär und müssen nur laufen solange die großen Festplatten befüllt werden. Wenn ein Main Node nicht reicht und zusätzliche Festplatten nicht an einen Host angeschlossen werden können können weitere Hosts als Harvester betrieben werden. Dies hat auch den Vorteil, dass bei der Suche eines "Proofs" auf den Festplatten alle Harvester gleichzeitig nach dem Proof suchen können.</p>
+<p>Die Plotter brauchen Power. Der Full Node kann ein Raspberry Pi4 sein.
+Du willst 10 Festplatten am RPI 4 anschließen? Es soll billig sein? Kein Problem -&gt; <a href="https://www.amazon.de/IB-3810U3-Externes-Festplatten-schaltbar-Smart-L%C3%BCfter/dp/B01GPXNLC4/ref=sr_1_1_sspa?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&amp;keywords=icy+box+hdd+10+bay+usb&amp;qid=1636899922&amp;sr=8-1-spons&amp;psc=1&amp;spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzMjVTWlZGWEsyU1ZSJmVuY3J5cHRlZElkPUEwODg3NDY0M0JIU0JEVFBVRkE5VCZlbmNyeXB0ZWRBZElkPUEwNzgzNzgzMzEyV1M2SktETVVLSCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Amazon - Icy Box IB-3810U3 </a></p>
+<h2 id="chia-auf-der-commandline">Chia auf der CommandLine</h2>
+<p>Da alle Chia Forks gleich funktionieren, erkläre ich das ganze anhand von Beispielen der Chia Forks die ich verwendet habe.
+Du wirst auf den offiziellen Projekt Seiten immer ähnliche Anleitungen finden.</p>
+<h2 id="user">User</h2>
+<p>verwende einen sudo Berechtigten User um Chia (oder seine Forks) zu installieren. Verwende am besten einen separaten User (NICHT sudo Berechtigt) um die Clients zu betreiben.
+Du hast mindestens 3 User</p>
+<ul>
+<li>root -&gt; Der User den wir NICHT verwenden</li>
+<li>rudi -&gt; der Sudo Berechtigte User der root werden darf</li>
+<li>chia -&gt; OHNE Sudo Rechte -&gt; dieser User betreibt die Chia Clients</li>
+</ul>
+<p>Wenn du GANZ auf Nummer sicher gehen willst, legst du pro Chia Fork wieder einzelne User an. Jeweils ohne Sudo Rechte:</p>
+<ul>
+<li>hddcoin</li>
+<li>flax</li>
+<li>flora</li>
+<li>usw</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Die Installation stellt erst mal die Python Pakete und die Binaries bereit. Du bekommst lediglich die "commands" für die Ausführung. Es wird noch nichts eingerichtet oder Konfiguriert.</p>
+<h3 id="installation-via-source-code">Installation via Source Code</h3>
+<p>hierfür brauchst du kein Sudo. Du kompilierst die Binaries in deinem User Profil. Ich habe das z.B. bei HDDCoin auf meinem Raspberry gemacht, da es keine ARM64 Binaries hierfür gibt.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span> ~
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mkdir hddcoin
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span> hddcoin
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>git clone https://github.com/HDDcoin-Network/hddcoin-blockchain.git
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">cd</span> hddcoin-blockchain/
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sh install.sh
+</code></pre></div>
+<p>Bei Chia wäre das dann natürlich so</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span> ~
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir chia
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span> chia
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git clone https://github.com/Chia-Network/chia-blockchain.git
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">cd</span> chia-blockchain/
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sh install.sh
+</code></pre></div>
+<p>Das ist auch schon alles. Bei Chia ersetze hddcoin durch chia und durch die URLs des Chia Projekts. Die Einrichtung und Konfiguration des Chia Clients ist ein anderes Thema</p>
+<h3 id="installation-via-debian-paket">Installation via Debian Paket</h3>
+<p>Flora betreibe ich auf einem x64 Prozessor. Bei Flora habe ich hier also passende Debian Pakete.
+Als sudo Berechtigter User machst du so etwas hier</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wget https://github.com/Flora-Network/flora-blockchain/releases/download/0.2.12/flora-blockchain_0.2.12_amd64.deb
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo apt install ./flora-blockchain_0.2.12_amd64.deb
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#Flora für die Command Line ist nun installiert</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">#Aus bequemlichkeit will ich Flora direkt im Path haben</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">#Flora finden (geht genauso mit Chia)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>sudo find / -name flora
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">#Flora verlinken (chia macht das z.B. automatisch)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>sudo ln -s /usr/lib/flora-blockchain/resources/app.asar.unpacked/daemon/flora /usr/local/bin/flora
+</code></pre></div>
+<p>Jetzt sollte z.b. flora Betriebsbereit sein</p>
+<h2 id="verwendung-des-clients">Verwendung des Clients</h2>
+<p>je nachdem wie du den Client installiert hast, musst du etwas anders machen um den Client verwenden zu können.</p>
+<h3 id="wenn-uber-paketmanager-installiert">Wenn über Paketmanager installiert</h3>
+<p>Wenn du den Client via Distributionspaket installiert hast, hast du in der Regel eine "binary" die du direkt ausführen kannst (im Beispiel oben habe ich "flora" verlinkt)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>flora
+</code></pre></div>
+<h3 id="wenn-uber-sourcecode-installiert">Wenn über Sourcecode Installiert</h3>
+<p>Wenn du den Client über Sourcecode installiert hast. Wurde im Zielverzeichnis eine Python virtual Environment installiert. Diese musst du aktivieren um die Chia Commands zur verfügung zu haben</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span> chia-blockchain
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>. ./activate
+</code></pre></div>
+<p>Deine Prompt verändert sich. Es steht "(venv)" vorne dran
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>(venv) ubuntu@cloud:~/install/chia-blockchain
+</code></pre></div></p>
+<p>Nun solltest du die chia Commands zur Verfügung haben</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>chia -h
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">#Hilfe</span>
+</code></pre></div>
+<h2 id="initialisierung">Initialisierung</h2>
+<p>Bei den folgenden Abschnitten gehe ich davon aus, dass du das jeweilige Chia (oder Fork) Python Environment aktiviert hast und somit das jeweilig Chia command zur Verfügung hast.
+Bei der Initialisierung eines Chia Clients werden Konfigurationsdaten, Datenbanken, Keys, Zertifikate und dergleichen in ein verstecktes Verzeichnis in deinem Homeverzeichnis geschrieben.</p>
+<p>z.B.
+- $HOME/.chia
+- $HOME/.flora
+- $HOME/.hddcoin</p>
+<p>Die Ordnerstruktur darunter sieht immer so aus (diese wird erst bei Initialisierung geschrieben):</p>
+<ul>
+<li>.chia</li>
+<li>mainnet<ul>
+<li>cache</li>
+<li>config # hier liegt die Konfigurationsdatei für deinen User</li>
+<li>ssl # Eine SelfSigned CA und Zertifikate mit denen deine Chia Komponenten kommunizieren</li>
+<li>db # hier liegt die Blockchain Database (sqlite). <strong>Um schneller starten zu können, kannst du die komplette Blockchain DB von einer vertrauenswürdigen Quelle kopieren</strong></li>
+<li>log # hier wird geloggt</li>
+<li>run</li>
+<li>wallet # hier liegt deine Wallet Database</li>
+</ul>
+</li>
+</ul>
+<p>Führe die Initialisierung mit dem User aus, der die Chia Farm betreiben soll</p>
+<p>z.B.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>su - chia
+</code></pre></div>
+<p>dann Initialisierst du deinen Client
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>chia init
+</code></pre></div></p>
+<h2 id="erstellen-eines-private-keys">Erstellen eines private Keys</h2>
+<p>Das erste was du brauchst in ein private Key. Der private Key ist dein kritischster Bestandteil dieser Installation und darf nie in unbefugte Hände geraten. Bei Erstellung des Keys bekommst du ein "24 word mnemonic". Mit diesem mnemonic kann der Key wiederhergestellt werden. Notiere dieses am besten zwei mal auf Papier und hebe es an zwei unterschiedlichen Orten auf.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">#Generieren</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>chia keys generate
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">#Deine 24 secret words nochmal anzeigen</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>chia keys show --show-mnemonic-seed
+</code></pre></div>
+<h2 id="oder-importieren-eines-private-keys">Oder importieren eines private Keys</h2>
+<p>Hast du bereits einen private Key erstellt und willst z.B. deine Plots auch in anderen Chia Forks verwenden musst du den selben private Key in die anderen Clients importieren</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">#Importieren mit Hilfe der 24 words</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>chia keys add
+</code></pre></div>
+<h2 id="starten-des-farmers">Starten des Farmers</h2>
+<p>Bei starten des Farmers wird deine Wallet, dein FullNode, dein Harvester und dein Farmer gestartet. Dein Full Node beginnt damit sich mit der Blockchain zu synchronisieren. <strong>Das kann einige Tage dauern</strong></p>
+<p>Hier bemerken wir nun einen Vorteil der Commandline gegenüber der GUI. Auf der Commandline wird ein Daemon gestartet und du kannst dich wieder aus dem System ausloggen. Startest du die GUI dann starten die Daemons automatisch mit. Allerdings werdenmit der GUI auch automatisch alle Daemons beendet. Bedeutet, einmal mit der GUI gestartet, darfst du dich nicht mehr von der GUI Abmelden.
+Aber nun starten wir erst mal unseren Farmer</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>chia start farmer
+</code></pre></div>
+<p>Du beginnst mit der Blockchain zu synchronisieren. Dein FullNode muss voll synchronisiert werden bevor du XCH Coins verdienen kannst. Du kannst aber bereits <strong>vorher schon mit dem Plotten beginnen</strong>
+Deinen aktuellen Status siehst du dann so</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>chia show --state --connections
+</code></pre></div>
+<p>z.b.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Current Blockchain Status: Full Node Synced
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Peak: Hash: db08d075673cdf95f8a1550958ddc98b04961537fe25400471224159ddf71417
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>      Time: Sun Nov 14 2021 08:28:13 CET                  Height:    1138722
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Estimated network space: 35954.135 PiB
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>Current difficulty: 3008
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>Current VDF sub_slot_iters: 135266304
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>Total iterations since the start of the blockchain: 4279546468297
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>  Height: |   Hash:
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>  1138722 | db08d075673cdf95f8a1550958ddc98b04961537fe25400471224159ddf71417
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>  1138721 | 828258873c67056847bd4246f171e7a96192d2bbd903a57dc1b5ca9e4f48be3b
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>  1138720 | 2944b1fe31877b4c2050132c2ccbaa8ce0aa2ba24254513fa585ca5c540b4def
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>  1138719 | 5de2e20f416cefc2a1643ccdf7f91ef2d409ba84b72f460e7e6b09547b0da1da
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>Connections:
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>Type      IP                                     Ports       NodeID      Last Connect      MiB Up|Dwn
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>FARMER    127.0.0.1                              38916/8447  6f859972... Nov 10 09:53:17      4.1|0.0    
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>WALLET    127.0.0.1                              39034/8449  2af00103... Nov 14 08:27:42     72.5|0.2    
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>FULL_NODE 109.136.117.75                          8444/8444  1de41420... Nov 14 08:27:47     16.5|36.1   
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>                                                 -SB Height:  1138722    -Hash: db08d075...
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>FULL_NODE 211.72.136.88                           8444/8444  2867716e... Nov 14 08:27:48      9.3|141.2  
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>                                                 -SB Height:  1138722    -Hash: db08d075...
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>FULL_NODE 81.100.17.198                           8444/8444  4c8203c5... Nov 14 08:27:47     27.6|56.0   
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>                                                 -SB Height:  1138722    -Hash: db08d075...
+</code></pre></div>
+<h2 id="pool-oder-nicht-pool">Pool oder Nicht Pool</h2>
+<p>in der Regel willst du einem Pool beitreten. Der Chia Netspace ist inzwischen schon so groß, dass du etliche Petabytes Speicher brauchst um eine Chance zu haben einen Plot zu gewinnen. Mit Pools kannst du Bruchteile gewinnen und verdienst so auch Chia.</p>
+<p>Um einem Pool beizutreten -&gt; folge dem Chia Pooling Guide
+- https://github.com/Chia-Network/chia-blockchain/wiki/Pooling-User-Guide#how-to-start-pooling-in-6-steps</p>
+<p>Unter https://faucet.chia.net/ kannst du dir ein bisschen Mojo auf deine Wallet überweisen lassen um ein NFT für das Pooling plotten zu können. Du solltest 0.000000000010 XCH vom Faucet bekommen. Alternativ kann dir auch ein Freud Mojo überweisen.</p>
+<p>Du trittst dan einem Pool bei indem du einen Plot für den Pool erstellst</p>
+<p>z.b.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>chia plotnft create --fingerprint 116privatekeyFingerprint --pool_url https://eu1.pool.space --fee <span class="m">0</span>.000000000001
+</code></pre></div>
+<h2 id="plotten-der-files-fur-chia">Plotten der Files für Chia</h2>
+<p>Bei Chia geht es darum Speicherplatz für das Netzwerk bereitzustellen. Das machst du in dem du eine Art "Bingo Karten" auf deine Festplatten Plottest. Das Plotten ist der <strong>Resourcenintensivste Teil</strong> des Chia Farmings. Du musst nur zu beginn Plotten bis der Speicherplatz deiner Festplatten mit Plots belegt ist. Diese Plots kannst du dann über Jahre verwenden. Aktuell sind "32k Plots" aktuell. Es kann sein, dass mit besserer Hardware es notwendig wird z.B. "33k Plots" zu plotten. Das ist aber noch Zukunftsmusik</p>
+<p>Komplette Guides zum Plotten findest du hier:
+- <a href="https://www.chia.net/2021/02/22/plotting-basics.html">Plotting Basics</a>
+- <a href="https://github.com/Chia-Network/chia-blockchain/wiki/Alternative--Plotters">Alternative Plotter</a> (ich z.B. verwende <a href="https://github.com/madMAx43v3r/chia-plotter">MadMax</a>)
+  - MadMax wird inzwischen in den Original Chia Client integriert. Ich verwende noch immer den von der MadMax Seite: https://github.com/madMAx43v3r/chia-plotter
+  - Aber siehe mal <code>chia plotters -h</code> (in der aktuellen Version des Chia Clients)
+- <a href="https://github.com/Chia-Network/chia-blockchain/wiki/k-sizes">Plot k sizes aktuell ist 32k Standard</a>
+- <a href="https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference">Command Reference</a></p>
+<h2 id="ressourcen-zum-plotten">Ressourcen zum Plotten</h2>
+<p>beim Plotten werden temporäre Files geschrieben auf denen sehr viele IOPS generiert werden. Für ein 110 GB Plot File weren mehrere Terrabytes an Daten geschrieben bevor das endgültige Plotfile geschrieben werden kann. Du brauchst schnelle SSDs oder genügend RAM und die temporären Files zu schreibnen sonst dauern ein eiziger Plot Tage.</p>
+<p>Entweder eine 512GB <strong>ausdauernde</strong> SSD / NVME z.B. https://www.seagate.com/de/de/internal-hard-drives/ssd/firecuda-ssd/</p>
+<p>Oder 128 GB RAMDisk für 75% der IOPs
+und 350 GB RAMDisk oder SSD für 25% der IOPs (z.B. bei Verwendung von MadMax Plotter)</p>
+<p>Das Plotten muss nicht auf deinem Main Node stattfinden. Du kannst z.B die Farm auf einem kleinen strom sparenden Raspberry Pi4 laufen lassen während du das temporär aufwendige Plotting auf einer Leistungsfähigen Workstation laufen lässt. <strong>Der Plotter benötigt keine private Keys</strong>. Du musst dem Plotter lediglich ein paar PUBLIC Keys mitgeben. Das bedeutet, theretisch könntest du das Plotten an einen externen Dienstleister Outsourcen.</p>
+<h2 id="so-wird-geplottet">So wird geplottet</h2>
+<p>Mein Plot Script sieht z.B. so aus (MadMax Plotter):</p>
+<p>Erst mal musst du deine Keys rausbekommen:
+Das hier machst du auf deinem MAIN Node. Deine Wallet und Farmer Public Keys:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>chia keys show
+</code></pre></div></p>
+<p>Notiere deinen FarmerPublicKey</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Showing all private keys:
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Fingerprint: 116privatekeyFingerprint
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Master public key (m): 95a5150d3f208bdfMasterPublicKey
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Master private key (m): 4d4fe183a636a3MasterPrivateKey
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>Farmer public key (m/12381/8444/0/0): a5e7f85c750d654e5fa7ae36a82ffFarmerPublicKey
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>Pool public key (m/12381/8444/1/0): 97373c34069ca480819a6PoolbPublicKey
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>First wallet key (m/12381/8444/2/0): aa7633ae18259477273a320f32d85FirstWalletKey
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>First wallet address: xch14n2vdvh5yx6th9rfjk6dheazt49mFirstWalletAddress
+</code></pre></div>
+<p>Deine Pool NFT Keys:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>chia plotnft show
+</code></pre></div>
+<p>Notiere deine Pool Contract Address</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Wallet height: 1139037
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Sync status: Synced
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Wallet id 2: 
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>Current state: FARMING_TO_POOL
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>Current state from block height: 623409
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>Launcher ID: 9bcf0aLauncherId
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>Target address (not for plotting): xch19PlotTarget
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>Number of plots: 385
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>Owner public key: af4OwnerPK
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>Pool contract address (use ONLY for plotting - do not send money to this address): xch1PoolContractAddress
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>Current pool URL: https://eu1.pool.space
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>Current difficulty: 7
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>Points balance: 559
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>Points found (24h): 3749
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>Percent Successful Points (24h): 99.97%
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>Relative lock height: 64 blocks
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>Payout instructions (pool will pay to this address): xch1PayoutInstructions
+</code></pre></div>
+<p>Mein Script für das Plotting über den Pool sieht dann z.B. so aus:
+wenn du über die GUI Plotten willst, bedenke, dass für den gesamten Plot Vorgang die GUI geöffnet bleiben muss. Dieses Script kann wie bereits erwähnt auf einem ganz anderen Rechner laufen. Du kannst auf dem anderen Rechner z.B. NUR den MadMax Plotter installieren (ohne den vollen Chia Client). Der Plotter benötigt keinen private Key. Lediglich die hier erwähnten PoolContractAddress und FarmerPublicKey.</p>
+<p>Die Files die du Plottest kannst du im nachhinein auch kopieren / verschieben. Bedenke aber, dass jeder Plot einzigartig sein muss.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nv">POOL_CONTRACT_ADDRESS</span><span class="o">=</span>xch1PoolContractAddress
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nv">FARMER_PUBLIC_KEY</span><span class="o">=</span>a5e7f85c750d654e5fa7ae36a82ffFarmerPublicKey
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nv">FAST_DISK</span><span class="o">=</span>/chiatmp/plot01/
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nv">TMP_DISK</span><span class="o">=</span>/chiatmp/plot02/
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nv">FINAL_DISK</span><span class="o">=</span>/mnt/chia/farm03/
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">LOGFILE</span><span class="o">=</span>/var/log/chia/chia_plot.log
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nb">echo</span> <span class="s2">&quot;Starting Plot &quot;</span><span class="sb">`</span>date +%Y-%m-%d_%H-%M-%S<span class="sb">`</span> &gt;&gt; <span class="nv">$LOGFILE</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="c1">#Temporaere Verzeichnisse ausleeren</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>rm <span class="nv">$FAST_DISK</span>*
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>rm <span class="nv">$TMP_DISK</span>*
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>rm <span class="nv">$FAST_DISK2</span>*
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>rm <span class="nv">$TMP_DISK2</span>*
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="c1">#Ich starte den Prozess mit &quot;nice&quot; und im Hintergrund. Mit -n 100 sage ich es sollen 100 Plots in die &quot;FINAL_DISK&quot; geschrieben werden</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>nice -n <span class="m">10</span> chia_plot -n <span class="m">100</span> -2 <span class="nv">$FAST_DISK</span> -t <span class="nv">$TMP_DISK</span> -d <span class="nv">$FINAL_DISK</span> -c <span class="nv">$POOL_CONTRACT_ADDRESS</span> -f <span class="nv">$FARMER_PUBLIC_KEY</span> <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> &gt;&gt; <span class="nv">$LOGFILE</span> <span class="p">&amp;</span> <span class="nb">echo</span> <span class="nv">$!</span> &gt; <span class="nv">$PLOT_PIDFILE</span> <span class="p">&amp;</span>
+</code></pre></div>
+<h2 id="hinzufugen-von-plots-zum-farmer">Hinzufügen von Plots zum Farmer</h2>
+<p>Wenn du auf einer anderen Maschine geplottet hast, dann machst du das folgende wieder auf deinem MAIN Node (dort wo du deinen Chia Client mit <code>chia init</code> initialisiert hast).</p>
+<p>Du kannst Plots aus mehreren Pfaden zu deiner Chia Farm hinzufügen. Nimm die Pfade die zu den <code>*.plot</code> Dateien führen.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>chia plots add --final_dir /mnt/chia/hdd01
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>chia plots add --final_dir /mnt/chia/hdd02
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>chia plots add --final_dir /mnt/chia/hdd03
+</code></pre></div>
+<h2 id="prufen-der-plots-auf-gultigkeit">Prüfen der Plots auf Gültigkeit</h2>
+<p>Du kannst auch die Gültigkeit deiner Plots testen</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>chia plots check
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../chia_premine/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chia Premine" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chia Premine
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../ethereum/zksync_layer2/" class="md-footer__link md-footer__link--next" aria-label="Next: ZKSync als Layer2 Lösung für Storj Ethereum" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ZKSync als Layer2 Lösung für Storj Ethereum
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8aa65030.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.13.10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
