@@ -1,6 +1,6 @@
 # Icon for Chia App on Linux (Gnome)
 
-The Chia GUI on Ubuntu / Debian is missing a nice Icon. To Fix this take this file:
+The Chia GUI on [Ubuntu](https://www.ubuntu.com) / [Debian](https://www.debian.org) is missing a nice Icon. To Fix this take this file:
 
 - [chia-blockchain.svg](files/chia-blockchain.svg)
 
