@@ -1,7 +1,37 @@
 site_name: Blockchain Stuff
 site_url: https://rudolfachter.github.io/blockchain-stuff/public
 site_dir: public
-theme: material
+theme: 
+  name: material
+  logo: gfx/chia-blockchain.svg
+  palette:
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Dark Mode
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Light Mode
+  features:
+    - navigation.instant
+      navigation.tabs
+      navigation.expand
+      navigation.top
+      toc.follow
+      toc.integrate
+extra:
+  tags:
+    Linux: linux
+    Chia: chia
+    Bitcoin: bitcoin
+
 extra_css:
   - "css/extra.css"
 
@@ -27,5 +57,7 @@ plugins:
       css_style:
         width: "1496px"
         height: "841px"
+  - tags:
+      tags_file: tags.md
 
 
