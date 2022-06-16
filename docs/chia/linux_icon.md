@@ -22,7 +22,7 @@ sudo mv chia-blockchain.png chia-blockchain.png.old
 sudo cp /home/youruser/Downloads/chia-blockchain.svg /usr/share/pixmaps
 
 #you can also download the file directly here
-wget https://rudolfachter.github.io/blockchain-stuff/public/chia/files/chia-blockchain.svg
+sudo wget https://rudolfachter.github.io/blockchain-stuff/public/chia/files/chia-blockchain.svg
 ```
 
 Then you should see a nice Chia Icon on your applications screen
