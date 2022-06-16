@@ -31,6 +31,12 @@ extra:
     Linux: linux
     Chia: chia
     Bitcoin: bitcoin
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/AchterRudolf
+    - icon: fontawesome/brands/github
+      link: https://github.com/RudolfAchter
+
 
 extra_css:
   - "css/extra.css"

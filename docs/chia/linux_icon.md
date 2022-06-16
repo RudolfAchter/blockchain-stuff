@@ -17,8 +17,12 @@ Copy it to your Linux Machine (or download it there). Then do this in a terminal
 cd /usr/share/pixmaps
 #Rename old Icon
 sudo mv chia-blockchain.png chia-blockchain.png.old
+
 #Copy new Icon (its a scalable svg. Differend File Ending is no problem)
 sudo cp /home/youruser/Downloads/chia-blockchain.svg /usr/share/pixmaps
+
+#you can also download the file directly here
+wget https://rudolfachter.github.io/blockchain-stuff/public/chia/files/chia-blockchain.svg
 ```
 
 Then you should see a nice Chia Icon on your applications screen
