@@ -574,7 +574,7 @@
 <h1 id="splitting-chia-coins-for-offers">Splitting Chia Coins for Offers</h1>
 <p>today i wanted to publish a few chia offers on these Chia offer sites. I want my "customers" to be able to buy the coins in small orders (for DCA or like that). So i decided to make multiple 1 XCH offers. After making one offer and trying to make a second offer i got an error message saying that i am not able to spend anymore coins. What? There is enough XCH in there. Then i remembered i read something how chia coins work.</p>
 <p>I transferred my XCH from exchange to this wallet in one transaction. So there was "physically" ONE Coin in my wallet with a "value" of 30 XCH. But i want to make 20 x 1 XCH offers from there. What chia does when you spend coins looks like this:</p>
-<div class="mermaid">flowchart LR
+<pre class="mermaid"><code>flowchart LR
     my_wallet[My Wallet]
     parent_coin[parent_coin\nvalue: 30 XCH]
     child_coin1[child_coin\nvalue:1 XCH]
@@ -583,10 +583,10 @@
 
     my_wallet --send 1XCH to destination--&gt; parent_coin --change--&gt; child_coin1 &amp; child_coin2
     child_coin2--&gt;my_wallet
-    child_coin1--&gt;destination_wallet</div>
+    child_coin1--&gt;destination_wallet</code></pre>
 <p>So the one big coin is split into two "smaller" coins. One is sent to destination. The other one i get back as "change". Think of it like change when you buy your coffee with cash.</p>
 <p>So what do i do now with my offers? I make change myself!</p>
-<div class="mermaid">flowchart LR
+<pre class="mermaid"><code>flowchart LR
     my_wallet[My Wallet]
     parent_coin[parent_coin\nvalue: 30 XCH]
     child_coin1[child_coin\nvalue:1 XCH]
@@ -594,7 +594,7 @@
 
     my_wallet --send 1XCH to my wallet--&gt; parent_coin --change--&gt; child_coin1 &amp; child_coin2
     child_coin2--&gt;my_wallet
-    child_coin1--&gt;my_wallet</div>
+    child_coin1--&gt;my_wallet</code></pre>
 <p>When i do this 30 times i have 30 coins with value of 1 XCH. Luckily we don't have to pay transaction fees yet. So basically when i want to make 30 offers i have to do 30 transactions first to have the coins for this (if all XCH came in one transaction). When i spend the "parent_coin" i have to wait until the transaction is complete before i can start the next transaction.</p>
 <p>OK i have to automate this. I dont want to wait and click for each and every coin. I am a PowerShell Guy, so i came up with "ChiaShell" for automating things with my Chia Client. For this particular job i am using the <a href="https://github.com/Chia-Network/chia-blockchain/blob/main/chia/rpc/wallet_rpc_api.py">wallet_rpc_api</a> from chia.</p>
 <p>I wrote this Powershell Module</p>

@@ -664,7 +664,7 @@
 <h3 id="but-you-can-follow-the-coins">But you can follow the coins</h3>
 <p>One thing you CAN follow perfectly, are the coins itself. Each coin created has a parent. You can follow parents ultimately until "Genesis", the start of the whole blockchain. When a coin is "spent" it will be destroyed and split into children with new values transferred to the new destination (which also can be your own wallet. Think of "change" when you deal with cash.). You can perfectly trace on blockchain which coins are spent and which are not. The exact premine amount is divided into 4 coins which stay there unspent since <a href="https://en.wikipedia.org/wiki/Star_Wars_Day">May 4th 2021</a> (really? Exactly 10th anniversary of Star Wars Day? 👍)</p>
 <p>these (shortened) hashed are linked to <a href="https://xchscan.com">xchscan.com</a>. You can check "Parent Coin" and "Child Coins" for each transaction. As long these coins stay "unspent" and have no childs, they really were not touched</p>
-<div class="mermaid">flowchart TD
+<pre class="mermaid"><code>flowchart TD
   subgraph sub01["Chia Premine Coins"]
     subgraph padding01[ ]
 
@@ -692,7 +692,7 @@
   end
 
   classDef padding fill:none,stroke:none
-  class padding01,padding02,padding03 padding</div>
+  class padding01,padding02,padding03 padding</code></pre>
 
               
             </article>
