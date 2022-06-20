@@ -37,6 +37,12 @@ extra:
       link: https://twitter.com/AchterRudolf
     - icon: fontawesome/brands/github
       link: https://github.com/RudolfAchter
+    - icon: fontawesome/brands/mixcloud
+      link: https://www.mixcloud.com/darul79/
+    - icon: fontawesome/brands/keybase
+      link: https://keybase.io/rudolfachter
+    - icon: fontawesome/brands/reddit
+      link: https://www.reddit.com/user/darul85
 
 
 extra_css:
