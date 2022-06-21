@@ -16,3 +16,13 @@
 - [CHIPs Repository](https://github.com/Chia-Network/chips)
 - [Chialisp](https://chialisp.com/docs/getting_started/intro_to_chialisp)
 - [ChiaLinks (for everything else)](https://chialinks.com/cats/)
+
+#### Chia Blockchain explorers
+ 
+- [chia.tt](https://chia.tt)
+- [xchscan.com](https://xchscan.com/)
+- [spacescan.io](https://www.spacescan.io/)
+- [chiastatus.com](https://www.chiastatus.com/)
+
+#### Buy Chia
+- [OKX Exchange](https://www.okx.com/join/9468999) (Support me by using this link)
