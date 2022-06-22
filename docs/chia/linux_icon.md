@@ -1,5 +1,6 @@
 ---
 tags:
+    - Tech
     - Linux
     - Chia
 ---

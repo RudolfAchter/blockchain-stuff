@@ -1,3 +1,10 @@
+---
+tags:
+    - Ethereum
+    - Layer2
+---
+
+
 # ZKSync als Layer2 Lösung für Storj Ethereum
 
 Mit ZKSync Lassen sich Transaction Fees auf Ehtereum dramatisch reduzieren.

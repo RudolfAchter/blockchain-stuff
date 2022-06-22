@@ -1,3 +1,12 @@
+---
+tags:
+    - Tech
+    - Linux
+    - Windows
+    - Chia
+    - Powershell
+---
+
 # Splitting Chia Coins for Offers
 
 today i wanted to publish a few chia offers on these Chia offer sites. I want my "customers" to be able to buy the coins in small orders (for DCA or like that). So i decided to make multiple 1 XCH offers. After making one offer and trying to make a second offer i got an error message saying that i am not able to spend anymore coins. What? There is enough XCH in there. Then i remembered i read something how chia coins work.

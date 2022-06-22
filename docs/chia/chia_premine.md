@@ -1,3 +1,10 @@
+---
+tags:
+    - Chia
+    - Blockchain
+    - Economy
+    - Market
+---
 
 # Chia Premine
 

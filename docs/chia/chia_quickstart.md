@@ -1,3 +1,10 @@
+---
+tags:
+    - Tech
+    - Linux
+    - Chia
+---
+
 # Chia Quickstart
 
 ## Überblick

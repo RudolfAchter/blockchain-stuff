@@ -1,3 +1,12 @@
+---
+tags:
+    - Terra
+    - Economy
+    - Market
+---
+
+# Terra Luna Anchor Crash
+
 Als info für euch was gestern passiert ist. Es gab übers Wochenende und gester einen Koordinierten Angriff auf "Anchor Protocol", "Terra (LUNA)", und UST (US Dollar Terra)
 
 

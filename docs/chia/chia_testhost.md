@@ -1,3 +1,12 @@
+---
+tags:
+    - Tech
+    - Linux
+    - Chia
+    - Powershell
+    - Ansible
+---
+
 # Chia Testhost for Developing things
 
 I want to develop some little tools for myself.
