@@ -52,3 +52,8 @@ flowchart TD
   class padding01,padding02,padding03 padding
 ```
 
+## Chia wants to lock these coins with custody features
+
+- https://youtu.be/RKNPyDGWIrM?t=24860
+
+We want to lock up the fonds. So that we cannot dump it. We can only pull out at a certain rate
