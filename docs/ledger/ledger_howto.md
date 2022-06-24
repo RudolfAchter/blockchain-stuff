@@ -1,3 +1,11 @@
+---
+tags:
+    - Ledger
+    - Security
+    - Tech
+---
+
+
 # Ledger Hardware Wallet HowTo
 
 ## Notfall Wiederherstellung mit Software Wallet
