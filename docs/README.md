@@ -11,6 +11,7 @@
 ### Chia
 
 - [Chia Greenpaper](https://www.chia.net/assets/ChiaGreenPaper.pdf)
+- [Chia Blockchain Database](chia/chia_blockchain_database.md)
 - [Chia Business Whitepaper](https://www.chia.net/assets/Chia-Business-Whitepaper-2021-02-09-v1.0.pdf)
 - [Chia Improvement Proposals (CHIPs)](https://www.chia.net/2022/02/14/chia-improvement-proposals.en.html)
 - [CHIPs Repository](https://github.com/Chia-Network/chips)
