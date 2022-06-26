@@ -1,6 +1,6 @@
 ---
 hide:
-    - toc
+    
 ---
 # Chia Impressions using craiyon
 
