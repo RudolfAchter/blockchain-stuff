@@ -46,7 +46,7 @@ Chia Impressions using [craiyon](https://www.craiyon.com/) (Dall-E mini)
 ![!description](files/chia_dalle_craiyon/craiyon_2022-6-26_9-47-2.png){ class="gallery" }
 ![!description](files/chia_dalle_craiyon/craiyon_2022-6-26_11-1-4.png){ class="gallery" }
 
-# These marmots are working hard
+## These marmots are working hard
 
 ![!description](files/chia_dalle_craiyon/craiyon_2022-6-26_10-59-28.png){ class="gallery" }
 ![!description](files/chia_dalle_craiyon/craiyon_2022-6-26_11-0-37.png){ class="gallery" }
