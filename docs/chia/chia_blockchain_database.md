@@ -1,3 +1,10 @@
+---
+tags:
+    - Tech
+    - Chia
+    - Farming
+---
+
 # Chia Blockchain Database
 
 The initial sync of the blockchain database lasts a few days. If you can download a copy from a trustwothy source you could get up and running faster. Do you remember Bittorrent? It's for effectively distributing large files over the internet. I seed a torrent of a Chia Database Snapshot. **[Use these files at your own risk!](https://twitter.com/hoffmang/status/1540773480983138304)**. You can check the history of the files here:
