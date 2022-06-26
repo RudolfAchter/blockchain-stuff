@@ -23,7 +23,7 @@ Current Version 2022-06-25:
 
 Checksums
 
-| Column1                                                                                       | Checksum                                                         |
+| File                                                                                       | Checksum                                                         |
 | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | [blockchain_v2_mainnet.sqlite.torrent](../files/blockchain_v2_mainnet.sqlite.torrent)         | c17b0974d4f99974d572006bed73b68bfdcfcb20a1d84b01a16743360190c160 |
 | blockchain_v2_mainnet.sqlite                                                                  | 2a6083498f851738df08341f4efef380dfa72ed4738d9c44c68ad087349d4a63 |
