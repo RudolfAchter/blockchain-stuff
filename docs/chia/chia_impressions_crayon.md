@@ -1,6 +1,9 @@
 ---
 hide:
-    
+tags:
+    - Chia
+    - Ai
+    - OffTopic
 ---
 # Chia Impressions using craiyon
 
