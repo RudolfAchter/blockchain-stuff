@@ -1,9 +1,11 @@
 site_name: Blockchain Stuff
 site_url: https://rudolfachter.github.io/blockchain-stuff/public
+#site_url: https://127.0.0.1:8000/blockchain-stuff/public
 site_dir: public
 copyright: This site is community run and is not affiliated with the Chia Network. I am doing this in my free time as a hobby.
 theme: 
   name: material
+  custom_dir: theme
   logo: include/chia-logo-white.svg
   palette:
     - scheme: default
@@ -50,6 +52,9 @@ extra_css:
 
 markdown_extensions:
   - toc
+  - lightgallery
+  - attr_list
+  - md_in_html
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
