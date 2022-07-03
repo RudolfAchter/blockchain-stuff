@@ -15,6 +15,7 @@
     - Human
       - Can have all kinds of staff
     - Chians
+      - Bonus In Solving Puzzles
     - Marmots
     - Beavers
     - Spacerats
