@@ -17,14 +17,20 @@
     - Chians
       - Bonus In Solving Puzzles
     - Marmots
-    - Beavers
+      - Bonus In Mining
     - Spacerats
+      - Bonus In Fighting 
     - Shiba Inus
-      - +0.2 multiplicator on Hypes and Ponzi Schemes
+      - Bonus on Hypes and Ponzi Schemes
+    - Squirrel
+      - Inventory Bonus
   - Class
     - Freighter
+      - Inventory Bonus
     - Destroyer
+      - Fighting Bonus
     - Explorer
+      - Explore Bonus
   - Equipment
     - Pilot
     - Commander
