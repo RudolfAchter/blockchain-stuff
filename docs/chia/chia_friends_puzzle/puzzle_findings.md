@@ -11,10 +11,35 @@ Some Links to sites that collect things that are known:
 
 These are ideas where i don't know if they are right or wrong
 
+Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com) :
+- K32s and Timelords are best friends
+- Timelords should prompt a search/lookup on K32s
+- He didn’t have control over the minting order
+- you win a "coin" if you have the right "prove"
+- (2022-07-06) confirmed mint numbers do not matter
+- (2022-07-06) the unique chia designed NFTs aren’t part of the puzzle (the fact that they are unique)
+- (2022-07-06) Chia legal team shut down the idea of a mnemonic/prize
+- (2022-07-06) the solution to the puzzle is something Seth is hoping the community can use afterwards
+- (2022-07-06) no steganography involved
+
 ### Something significant about 1854
 - Seth Jenks [posted on Twitter there is "something significant" on chia friend #1854](https://twitter.com/sethjenks/status/1544891610483556352)
 - [Playfair cipher](https://en.wikipedia.org/wiki/Playfair_cipher) was invented in year 1854
 - Sethjenks did not have control over order of chiafriends. So maybe nothing special in ChiaFriends NFT Data
+
+### There are 25 Timelords
+
+There are 25 Timelords. They can be layed out 5 x 5 like [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher)
+
+- [timelords_matix.html](files/out/timelords_matrix.html)
+
+### 26 keywords
+
+There are 26 keywords starting with each letter of the alphabet (A-Z)
+
+- [keywords.html](files/out/keywords.html)
+
+I think this also has to do with [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher)
 
 ### K32s and Timelords are best friends
 
@@ -22,6 +47,15 @@ K32s and Timelords are best friends. There are Timelords with a symbol on there 
 
 - [timelords_k32_best_friends.html](files/out/timelord_k32_best_friends.html)
 
+### 42 matching Coins for each Timelord
+
+For Each Timelord there are 42 Chia Friends with a Coin matching the Timelords Symbol.
+
+- [timelord_coins.html](files/out/timelord_coins.html)
+
+### 1865 K32 bodies
+
+- [k32.html](files/out/k32.html)
 
 
 ## Wrong attempts (possibly)
