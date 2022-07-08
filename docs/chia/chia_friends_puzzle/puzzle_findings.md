@@ -1,5 +1,21 @@
 # Chia Friends Puzzle findings
 
+## New Attempts
+
+These are ideas where i don't know if they are right or wrong
+
+### Something significant about 1854
+
+- [Playfair cipher](https://en.wikipedia.org/wiki/Playfair_cipher) was invented in year 1854
+- Sethjenks did not have control over order of chiafriends. So maybe nothing special in ChiaFriends NFT Data
+
+### K32s and Timelords are best friends
+
+
+- [timelords_k32_best_friends.html](https://r8nxcl.ddnss.de/timelord_k32_best_friends.html)
+
+
+
 ## Wrong attempts (possibly)
 
 These are ideas i came up with, but are proven as wrong
@@ -34,19 +50,3 @@ Start at Byte: 341
 ABBCDEEFGGHHIIIJJKKLLMNOPQRRSTUUVVWXXXYZ[\\]^_``aabccdeefgghijjklmnopqrrsstuvxy{}
 End at Byte: 581
 ```
-
-
-## New Attempts
-
-These are ideas where i don't know if they are right or wrong
-
-### Something significant about 1854
-
-- [Playfair cipher](https://en.wikipedia.org/wiki/Playfair_cipher) was invented in year 1854
-- Sethjenks did not have control over order of chiafriends. So maybe nothing special in ChiaFriends NFT Data
-
-### K32s and Timelords are best friends
-
-
-- [timelords_k32_best_friends.html](https://r8nxcl.ddnss.de/timelord_k32_best_friends.html)
-
