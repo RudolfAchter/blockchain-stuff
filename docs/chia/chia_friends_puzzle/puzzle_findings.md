@@ -48,5 +48,5 @@ These are ideas where i don't know if they are right or wrong
 ### K32s and Timelords are best friends
 
 
-- [timelords_k32_best_friends.html](timelords_k32_best_friends.html)
+- [timelords_k32_best_friends.html](https://r8nxcl.ddnss.de/timelord_k32_best_friends.html)
 
