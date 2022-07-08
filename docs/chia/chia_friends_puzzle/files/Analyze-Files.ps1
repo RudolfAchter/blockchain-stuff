@@ -1,3 +1,5 @@
+. "./Chia-Puzzle.ps1"
+
 $filesBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
 $origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
 $puzzleBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files"
@@ -23,18 +25,36 @@ $allObjects=$objects | ForEach-Object {
         Name = $obj.name
     }
 
+
     $match=$h_props.name | Select-String -Pattern '#([0-9]+)'
     $file=Get-Item -Path ($filesBasePath + "/" + $match.Matches.Groups[1].Value + ".*") | Where-Object{$_.Extension -in @(".gif",".png",".jpg")}
     $h_props.Add("file",$file)
     $h_props.Add("ipfsUrl",($origUrlBase + "/" + $file.Name))
 
+    $traitTypes=$obj.attributes.trait_type
+
     ForEach($trait in $traitTypes){
-        $h_props.Add($trait,($obj.attributes | Where-Object trait_type -eq $trait).value)
+
+        #Korrekturen bei Coins
+        if($trait -eq "Coins" -and $null -eq ($obj.attributes | Where-Object trait_type -eq $trait).value){
+            $h_props.Add($trait,"Infinity")
+        }
+        else{
+            $h_props.Add($trait,($obj.attributes | Where-Object trait_type -eq $trait).value)
+        }
     }
-    [ChiaFriend]$h_props
+
+    #Korrektur Butterfly falsch geschrieben
+    if($h_props.Body -eq "Timelord (Buterfly)"){
+        $h_props.Body="Timelord (Butterfly)"
+    }
+
+    [PsCustomObject]$h_props
     
     $i++
 } #| Tee-Object -Variable "allObjects" | Format-Table
+Write-Progress -Activity "Working on Objects" -Status ("Obj $i of " + $objects.Count) -PercentComplete 100
+
 
 $allObjects | Export-Clixml allObjects.cli.xml
 $allObjects=Import-Clixml ($puzzleBasePath + "/" + "allObjects.cli.xml")
@@ -47,7 +67,7 @@ $pattern='Timelord \(([^\)]+)\)'
 $allObjects | Where-Object {$_.Body -match $pattern} | ForEach-Object {
     $tl=$_
     $match = $tl.Body | Select-String -Pattern $pattern
-    $symbolValue=($match.Matches.Groups[1].Value) -replace 'Buterfly','Butterfly'
+    $symbolValue=($match.Matches.Groups[1].Value) #-replace 'Buterfly','Butterfly'
     Add-Member -InputObject $tl -Type NoteProperty -Name "Symbol" -Value $symbolValue -Force
     $Timelords+=$tl
 }
@@ -61,53 +81,109 @@ $allObjects | Where-Object {$_.Body -match $pattern} | ForEach-Object {
     $K32s+=$k32
 }
 
+$Coins=$allObjects| Where-Object {$null -ne $_.Coins}
+
 $header=(Get-Content -Path './include/header.html') -split '`r`n'
+$footer=(Get-Content -Path './include/footer.html') -split '`r`n'
 
 $out=''
 $out+='<table>'
-
 $Timelords | ForEach-Object {
     $tl=$_
     #$tl.Symbol
     $out+='<tr><td>'
-    $out+='<div class="chia_friend">'
-    $out+='<img src="' + $tl.ipfsUrl + '" style="width:100px"><br/>'
-    $out+='Accessories: ' + $tl.Accessories + '<br/>'
-    $out+='Background: ' + $tl.Background + '<br/>'
-    $out+='Body: ' + $tl.Body + '<br/>'
-    $out+='Coins: ' + $tl.Coins + '<br/>'
-    $out+='Eyes: ' + $tl.Eyes + '<br/>'
-    $out+='Hieroglyphs: ' + $tl.Hieroglyphs + '<br/>'
-    $out+='Mouth: ' + $tl.Mouth + '<br/>'
-    $out+='</div>'
+    $out+= Render-ChiaFriend -Friend $tl
     $out+='</td>'
     $out+='<td>'
     $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
         $k32=$_
         #$k32
-        $out+='<div class="chia_friend">'
-        $out+='<img src="' + $k32.ipfsUrl + '" style="width:100px"><br/>'
-        $out+='Accessories: ' + $k32.Accessories + '<br/>'
-        $out+='Background: ' + $k32.Background + '<br/>'
-        $out+='Body: ' + $k32.Body + '<br/>'
-        $out+='Coins: ' + $k32.Coins + '<br/>'
-        $out+='Eyes: ' + $k32.Eyes + '<br/>'
-        $out+='Hieroglyphs: ' + $k32.Hieroglyphs + '<br/>'
-        $out+='Mouth: ' + $k32.Mouth + '<br/>'
-        $out+='</div>'
+        $out+=Render-ChiaFriend -Friend $k32
         
     }
     $out+='</td>'
     $out+='</tr>'
 }
-
 $out+='</table>'
-
-
-$footer=(Get-Content -Path './include/footern.html') -split '`r`n'
-
 $html=$header + $out + $footer
 
 $html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html")
 
-$allObjects | Where-Object{$_.Artifacts -eq "Keyword Token"}
+
+$out=''
+$out+='<table>'
+$Timelords | ForEach-Object {
+    $tl=$_
+    #$tl.Symbol
+    $out+='<tr><td>'
+    $out+= Render-ChiaFriend -Friend $tl
+    $out+='</td>'
+    $out+='<td>'
+    $Coins | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
+        $coin=$_
+        #$k32
+        $out+=Render-ChiaFriend -Friend $coin
+        
+    }
+    $out+='</td>'
+    $out+='</tr>'
+}
+$out+='</table>'
+$html=$header + $out + $footer
+
+$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_coins.html")
+
+
+
+
+
+
+$KeywordFriends=$allObjects | Where-Object{$_.Artifacts -eq "Keyword Token"}
+
+$out=''
+$KeywordFriends | Sort-Object Keyword | ForEach-Object {
+    $out += (Render-ChiaFriend $_ -Properties @("Keyword") -Class "friend_small")
+}
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/keywords.html")
+
+
+$out=''
+$K32s | Sort-Object Coins | ForEach-Object {
+    $out += (Render-ChiaFriend $_ )
+}
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/k32.html")
+
+$out=''
+$K32s | Where-Object{$null -ne $_.Coins} | Sort-Object Coins | ForEach-Object {
+    $out += (Render-ChiaFriend $_ -Properties @("Coins") -Class "friend_small")
+}
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/k32_coins.html")
+
+
+
+$KeywordFriends | Measure-Object
+$Timelords | Measure-Object
+
+$Timelords = $Timelords |Sort-Object Symbol
+
+$out='<table>'
+$i=0
+for($y=1;$y -le 5;$y++){
+    $out+='<tr>'
+    for($x=1;$x -le 5;$x++){
+        $out+='<td>'
+        $out+=Render-ChiaFriend -Friend ($Timelords[$i]) -Class "friend_small" -Properties @("Symbol")
+        $out+='</td>'
+        $i++
+    }
+    $out+='</tr>'
+}
+$out+='</table>'
+
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/timelords_matrix.html")
+
+
