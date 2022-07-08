@@ -145,7 +145,7 @@ $KeywordFriends | Sort-Object Keyword | ForEach-Object {
     $out += (Render-ChiaFriend $_ -Properties @("Keyword") -Class "friend_small")
 }
 $html=$header + $out + $footer
-$html | Out-File -FilePath ($puzzleBasePath + "/out/keyword_friends.html")
+$html | Out-File -FilePath ($puzzleBasePath + "/out/keywords.html")
 
 
 $out=''

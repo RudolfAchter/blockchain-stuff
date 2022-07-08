@@ -11,7 +11,8 @@ Some Links to sites that collect things that are known:
 
 These are ideas where i don't know if they are right or wrong
 
-Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com) :
+Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com):
+
 - K32s and Timelords are best friends
 - Timelords should prompt a search/lookup on K32s
 - He didn’t have control over the minting order
