@@ -1,11 +1,18 @@
 # Chia Friends Puzzle findings
 
+## Knowns in the community
+
+Some Links to sites that collect things that are known:
+
+- [scotopic - The race to solve the Chia Friends puzzle](https://www.scotopic.xyz/the-race-to-solve-the-chia-friends-puzzle/)
+- [chialinks Rarity List](https://chialinks.com/chiafriends/)
+
 ## New Attempts
 
 These are ideas where i don't know if they are right or wrong
 
 ### Something significant about 1854
-
+- Seth Jenks [posted on Twitter there is "something significant" on chia friend #1854](https://twitter.com/sethjenks/status/1544891610483556352)
 - [Playfair cipher](https://en.wikipedia.org/wiki/Playfair_cipher) was invented in year 1854
 - Sethjenks did not have control over order of chiafriends. So maybe nothing special in ChiaFriends NFT Data
 
