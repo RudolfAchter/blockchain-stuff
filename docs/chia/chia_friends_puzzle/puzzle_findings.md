@@ -58,6 +58,12 @@ For Each Timelord there are 42 Chia Friends with a Coin matching the Timelords S
 
 - [k32.html](files/out/k32.html)
 
+## Scripts i use 
+
+I am using a few powershell scripts to query through the metadata and to render these HTML pages so see what it looks like.
+
+- <https://github.com/RudolfAchter/blockchain-stuff/tree/main/docs/chia/chia_friends_puzzle/files>
+
 
 ## Wrong attempts (possibly)
 
