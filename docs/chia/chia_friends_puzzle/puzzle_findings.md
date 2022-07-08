@@ -32,7 +32,7 @@ Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com):
 
 There are 25 Timelords. They can be layed out 5 x 5 like [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher)
 
-- [timelords_matix.html](files/out/timelords_matrix.html)
+- [timelords_matrix.html](files/out/timelords_matrix.html)
 
 ### 26 keywords
 
