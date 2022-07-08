@@ -20,7 +20,7 @@ These are ideas where i don't know if they are right or wrong
 
 K32s and Timelords are best friends. There are Timelords with a symbol on there body, and K32 with the same symbol as a coin above their head.
 
-- [timelords_k32_best_friends.html](files/timelord_k32_best_friends.html)
+- [timelords_k32_best_friends.html](files/out/timelord_k32_best_friends.html)
 
 
 
