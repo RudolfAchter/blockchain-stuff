@@ -67,6 +67,8 @@ For Each Timelord there are 42 Chia Friends with a Coin matching the Timelords S
 Long time i wondered what this Hieroglyph metadata is. The Hieroglyphs are on the K32 Chia friends. They are a very small variation of background Color. But when you play around with brightness and contrast levels then they become clearly visible.
 These also thematically have to do with [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher)
 
+**These are Hieroglyphs 1,2,3,4**
+
 ![!Hieroglyphs 1](files/hieroglyphs/8011_hieroglyphs_1.png){ class="gallery" }
 ![!Hieroglyphs 2](files/hieroglyphs/7837_hieroglyphs_2.png){ class="gallery" }
 ![!Hieroglyphs 3](files/hieroglyphs/5163_hieroglyphs_3.png){ class="gallery" }
