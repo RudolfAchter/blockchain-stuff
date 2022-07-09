@@ -9,7 +9,9 @@ Some Links to sites that collect things that are known:
 
 ## New Attempts
 
-These are ideas where i don't know if they are right or wrong
+My new attempts to find hints on the puzzle.....
+
+These tips are from: [scotopic - The race to solve the Chia Friends puzzle](https://www.scotopic.xyz/the-race-to-solve-the-chia-friends-puzzle/)
 
 Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com):
 
@@ -22,6 +24,8 @@ Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com):
 - (2022-07-06) Chia legal team shut down the idea of a mnemonic/prize
 - (2022-07-06) the solution to the puzzle is something Seth is hoping the community can use afterwards
 - (2022-07-06) no steganography involved
+
+Below my attempts to some parts
 
 ### Something significant about 1854
 - Seth Jenks [posted on Twitter there is "something significant" on chia friend #1854](https://twitter.com/sethjenks/status/1544891610483556352)
@@ -57,6 +61,16 @@ For Each Timelord there are 42 Chia Friends with a Coin matching the Timelords S
 ### 1865 K32 bodies
 
 - [k32.html](files/out/k32.html)
+
+### Hieroglyphs on K32 body images
+
+Long time i wondered what this Hieroglyph metadata is. The Hieroglyphs are on the K32 Chia friends. They are a very small variation of background Color. But when you play around with brightness and contrast levels then they become clearly visible.
+These also thematically have to do with [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher)
+
+![!Hieroglyphs 1](files/hieroglyphs/8011_hieroglyphs_1.png){ class="gallery" }
+![!Hieroglyphs 2](files/hieroglyphs/7837_hieroglyphs_2.png){ class="gallery" }
+![!Hieroglyphs 3](files/hieroglyphs/5163_hieroglyphs_3.png){ class="gallery" }
+![!Hieroglyphs 4](files/hieroglyphs/7631_hieroglyphs_4.png){ class="gallery" }
 
 ## Scripts i use 
 
