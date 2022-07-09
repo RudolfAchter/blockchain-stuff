@@ -55,6 +55,20 @@ $allObjects=$objects | ForEach-Object {
 } #| Tee-Object -Variable "allObjects" | Format-Table
 Write-Progress -Activity "Working on Objects" -Status ("Obj $i of " + $objects.Count) -PercentComplete 100
 
+#Get Image Properties
+
+for($i=0; $i -lt $allObjects.Count; $i++){
+    Write-Progress -Activity "Getting Alpha Channels" -Status ("$i of " + $allObjects.Count) -PercentComplete ($i / $allObjects.Count * 100)
+    $Format=identify -format '%[channels]' $allObjects[$i].File
+    if ($null -eq $allObjects[$i].File.ImageProps){
+        Add-Member -InputObject $allObjects[$i].File -Type NoteProperty -Name ImageProps -Value (@{})
+    }
+    if($null -eq $allObjects[$i].File.ImageProps.Format){
+        $allObjects[$i].File.ImageProps.Add("Format",$Format)
+    }
+}
+Write-Progress -Activity "Getting Alpha Channels" -Status ("$i of " + $allObjects.Count) -PercentComplete ($i / $allObjects.Count * 100)
+
 
 $allObjects | Export-Clixml allObjects.cli.xml
 $allObjects=Import-Clixml ($puzzleBasePath + "/" + "allObjects.cli.xml")
@@ -82,9 +96,11 @@ $allObjects | Where-Object {$_.Body -match $pattern} | ForEach-Object {
 }
 
 $Coins=$allObjects| Where-Object {$null -ne $_.Coins}
-
+# Header and Footer preparation for HTML
 $header=(Get-Content -Path './include/header.html') -split '`r`n'
 $footer=(Get-Content -Path './include/footer.html') -split '`r`n'
+
+# All Timelords Grouped with K32 with same Symbol
 
 $out=''
 $out+='<table>'
@@ -109,6 +125,8 @@ $html=$header + $out + $footer
 
 $html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html")
 
+
+# Timelords Grouped with all 42 Coins having the same symbol
 
 $out=''
 $out+='<table>'
@@ -140,6 +158,8 @@ $html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_coins.html")
 
 $KeywordFriends=$allObjects | Where-Object{$_.Artifacts -eq "Keyword Token"}
 
+# All Keywords
+
 $out=''
 $KeywordFriends | Sort-Object Keyword | ForEach-Object {
     $out += (Render-ChiaFriend $_ -Properties @("Keyword") -Class "friend_small")
@@ -148,12 +168,16 @@ $html=$header + $out + $footer
 $html | Out-File -FilePath ($puzzleBasePath + "/out/keywords.html")
 
 
+# All K32
+
 $out=''
 $K32s | Sort-Object Coins | ForEach-Object {
     $out += (Render-ChiaFriend $_ )
 }
 $html=$header + $out + $footer
 $html | Out-File -FilePath ($puzzleBasePath + "/out/k32.html")
+
+# All K32 with coins
 
 $out=''
 $K32s | Where-Object{$null -ne $_.Coins} | Sort-Object Coins | ForEach-Object {
@@ -166,6 +190,9 @@ $html | Out-File -FilePath ($puzzleBasePath + "/out/k32_coins.html")
 
 $KeywordFriends | Measure-Object
 $Timelords | Measure-Object
+
+
+# Timelords 5x5
 
 $Timelords = $Timelords |Sort-Object Symbol
 
@@ -187,3 +214,12 @@ $html=$header + $out + $footer
 $html | Out-File -FilePath ($puzzleBasePath + "/out/timelords_matrix.html")
 
 
+
+#Alpha Channels
+
+$out=''
+$allObjects | Where-Object{$_.File.ImageProps.Format -eq "srgba"} | ForEach-Object {
+    $out += (Render-ChiaFriend $_)
+}
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/alpha_channel.html")
