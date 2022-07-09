@@ -6,6 +6,7 @@ Some Links to sites that collect things that are known:
 
 - [scotopic - The race to solve the Chia Friends puzzle](https://www.scotopic.xyz/the-race-to-solve-the-chia-friends-puzzle/)
 - [chialinks Rarity List](https://chialinks.com/chiafriends/)
+- [Chia Friends Finder](https://chia-friends-finder.deno.dev/)
 
 ## New Attempts
 
