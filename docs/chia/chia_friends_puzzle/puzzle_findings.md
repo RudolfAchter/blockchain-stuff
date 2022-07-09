@@ -65,14 +65,15 @@ For Each Timelord there are 42 Chia Friends with a Coin matching the Timelords S
 ### Hieroglyphs on K32 body images
 
 Long time i wondered what this Hieroglyph metadata is. The Hieroglyphs are on the K32 Chia friends. They are a very small variation of background Color. But when you play around with brightness and contrast levels then they become clearly visible.
-These also thematically have to do with [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher)
+These also thematically have to do with [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher).
 
 **These are Hieroglyphs 1,2,3,4**
 
-![!Hieroglyphs 1](files/hieroglyphs/8011_hieroglyphs_1.png){ class="gallery" }
-![!Hieroglyphs 2](files/hieroglyphs/7837_hieroglyphs_2.png){ class="gallery" }
-![!Hieroglyphs 3](files/hieroglyphs/5163_hieroglyphs_3.png){ class="gallery" }
-![!Hieroglyphs 4](files/hieroglyphs/7631_hieroglyphs_4.png){ class="gallery" }
+The Numbers and hieroglyphs stay the same. 
+
+| Hieroglyphs 1                                               | Hieroglyphs 2                                               | Hieroglyphs 3                                               | Hieroglyphs 4                                               |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| ![!Hieroglyphs 1](files/hieroglyphs/8011_hieroglyphs_1.png) | ![!Hieroglyphs 2](files/hieroglyphs/7837_hieroglyphs_2.png) | ![!Hieroglyphs 3](files/hieroglyphs/5163_hieroglyphs_3.png) | ![!Hieroglyphs 4](files/hieroglyphs/7631_hieroglyphs_4.png) |
 
 ## Scripts i use 
 

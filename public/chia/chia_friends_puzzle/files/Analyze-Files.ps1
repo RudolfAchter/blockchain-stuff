@@ -218,9 +218,6 @@ $html | Out-File -FilePath ($puzzleBasePath + "/out/timelords_matrix.html")
 #Alpha Channels
 
 $out=''
-
-
-
 $allObjects | Where-Object{$_.File.ImageProps.Format -eq "srgba"} | ForEach-Object {
     $out += (Render-ChiaFriend $_)
 }
