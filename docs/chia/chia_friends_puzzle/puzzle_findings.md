@@ -56,6 +56,7 @@ This i have found in [XCH Foundation Discord](https://discord.gg/zGhYtMwW) - chi
 - Jon has a theory that the symbols align to greek letters <https://discordapp.com/channels/947974432041881660/993022953421807657/994837116607533057>
 - `The ASCII code 42 is for the asterisk "*" symbol, being a wildcard for everything.` [Phrases from The Hitchhiker's Guide to the Galaxy](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#The_Answer_to_the_Ultimate_Question_of_Life,_the_Universe,_and_Everything_is_42)
     - <https://www.rapidtables.com/code/text/ascii-table.html>
+- Jon attemted this [Timelord -> Matching Coin -> Matching Keyword](#timelords---keyword---coins)
 
 
 Below my attempts to some parts
@@ -128,6 +129,37 @@ AcornBirdsChinaDingoEdifyFixesGrazeHintsIndexJumboKingsLeafyMedalNicerOxideProve
 ```
 
 ![allKeywords](files/out/2022-07-10-10-52-21.png)
+
+### Timelords -> Keyword -> Coins
+
+@jon in Discord
+
+- <https://discordapp.com/channels/947974432041881660/993022953421807657/994788618096873582>
+
+![](2022-07-10-12-20-52.png)
+
+So i tried search Timelord -> Matching Coin -> Matching Keyword
+
+i matched the Keyword by:
+
+- Accessories
+- Body
+- Eyes
+- Mouth
+- Background
+
+- [timelord_coin_keyword_match_abemb.html](files/out/timelord_coin_keyword_match_abemb.html)
+
+in a second attempt i ignored background so i matched by:
+
+- Accessories
+- Body
+- Eyes
+- Mouth
+
+- [timelord_coin_keyword_match_abem.html](files/out/timelord_coin_keyword_match_abem.html)
+
+
 
 
 ## Wrong attempts (possibly)

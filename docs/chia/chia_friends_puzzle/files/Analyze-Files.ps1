@@ -1,9 +1,37 @@
 . "./Chia-Puzzle.ps1"
+. "./config.ps1"
 
 $filesBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
 $origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
 $puzzleBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files"
 
+
+$spaceScanApiKey=$Global:ChiaPuzzle.spacescan.apiKey
+
+$h_headers=@{
+    "x-api-coin"="XCH"
+    "x-auth-id"=$spaceScanApiKey
+    "x-api-version"="v0.1"
+}
+
+$cat=Invoke-RestMethod -Uri "https://api2.spacescan.io/v0.1/xch/cat/44a1d78b820f6404de3cc45b34932178f9ac8f3d9114db279f657ca83fa751b7" `
+    -Headers $h_headers -Method GET -ContentType "application/json"
+
+<#
+#FIXME funktioniert nicht: Support Anfrage bei spacescan.ip Support <https://discordapp.com/channels/919680063513968701/984558089401417808/995630948311908362>
+
+$nftCollection=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl" `
+    -Headers $h_headers -Method GET -ContentType "application/json"
+
+$nftCollection=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl" `
+    -Headers $h_headers -Method POST -ContentType "application/json" -Body ($h_headers | ConvertTo-Json)
+
+    #nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag
+
+$singleNft=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag" `
+    -Headers $h_headers -Method GET -ContentType "application/json" -Body ($h_headers | ConvertTo-Json)
+
+#>
 
 $objects=Get-ChildItem -Path $filesBasePath -Filter *.json | ForEach-Object {
     $JsonFile=$_
@@ -116,13 +144,13 @@ $Timelords | ForEach-Object {
     $tl=$_
     #$tl.Symbol
     $out+='<tr><td>'
-    $out+= Render-ChiaFriend -Friend $tl
+    $out+= Render-ChiaFriend -Friends $tl
     $out+='</td>'
     $out+='<td>'
     $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
         $k32=$_
         #$k32
-        $out+=Render-ChiaFriend -Friend $k32
+        $out+=Render-ChiaFriend -Friends $k32
         
     }
     $out+='</td>'
@@ -134,6 +162,8 @@ $html=$header + $out + $footer
 $html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html")
 
 
+
+
 # Timelords Grouped with all 42 Coins having the same symbol
 
 $out=''
@@ -142,13 +172,13 @@ $Timelords | ForEach-Object {
     $tl=$_
     #$tl.Symbol
     $out+='<tr><td>'
-    $out+= Render-ChiaFriend -Friend $tl
+    $out+= Render-ChiaFriend -Friends $tl
     $out+='</td>'
     $out+='<td>'
     $Coins | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
         $coin=$_
         #$k32
-        $out+=Render-ChiaFriend -Friend $coin
+        $out+=Render-ChiaFriend -Friends $coin
         
     }
     $out+='</td>'
@@ -159,8 +189,75 @@ $html=$header + $out + $footer
 
 $html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_coins.html")
 
+# Timelords -> Coins -> Keywords
+$out=''
+$out+='<table>'
+$Timelords | ForEach-Object {
+    $tl=$_
+    #$tl.Symbol
+    $out+='<tr><td>'
+    $out+= Render-ChiaFriend -Friends $tl
+    $out+='</td>'
+    $out+='<td>'
+    $Coins | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
+        $coin=$_
+        $matchingKeyword=$KeywordFriends | Where-Object{
+            $_.Accessories -eq $coin.Accessories -and
+            $_.Body -eq $coin.Body -and
+            $_.Eyes -eq $coin.Eyes -and
+            $_.Mouth -eq $coin.Mouth -and
+            $_.Background -eq $coin.Background
+        }
+        if($null -ne $matchingKeyword){
+            $out+=Render-ChiaFriend -Friends $coin
+            $out+=Render-ChiaFriend -Friends $matchingKeyword
+            $out+='<hr style="border-top: 2px solid grey; clear:both;">'
+        }
+    }
+    $out+='</td>'
+    $out+='</tr>'
+}
+$out+='</table>'
+$html=$header + $out + $footer
+
+$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_coin_keyword_match_abemb.html")
 
 
+
+
+# Timelords -> Coins -> Keywords Ignore Background
+$out=''
+$out+='<table>'
+$Timelords | ForEach-Object {
+    $tl=$_
+    #$tl.Symbol
+    $out+='<tr><td>'
+    $out+= Render-ChiaFriend -Friends $tl
+    $out+='</td>'
+    $out+='<td>'
+    $Coins | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
+        $coin=$_
+        $matchingKeyword=$KeywordFriends | Where-Object{
+            $_.Accessories -eq $coin.Accessories -and
+            $_.Body -eq $coin.Body -and
+            $_.Eyes -eq $coin.Eyes -and
+            $_.Mouth -eq $coin.Mouth
+            #$_.Background -eq $coin.Background
+        }
+        if($null -ne $matchingKeyword){
+            $out+=Render-ChiaFriend -Friends $coin
+            $out+=Render-ChiaFriend -Friends $matchingKeyword
+            $out+='<hr style="border-top: 2px solid grey; clear:both;">'
+
+        }
+    }
+    $out+='</td>'
+    $out+='</tr>'
+}
+$out+='</table>'
+$html=$header + $out + $footer
+
+$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_coin_keyword_match_abem.html")
 
 
 
@@ -210,7 +307,7 @@ for($y=1;$y -le 5;$y++){
     $out+='<tr>'
     for($x=1;$x -le 5;$x++){
         $out+='<td>'
-        $out+=Render-ChiaFriend -Friend ($Timelords[$i]) -Class "friend_small" -Properties @("Symbol")
+        $out+=Render-ChiaFriend -Friends ($Timelords[$i]) -Class "friend_small" -Properties @("Symbol")
         $out+='</td>'
         $i++
     }
@@ -260,3 +357,6 @@ for($i=$start;$i -le ($bytes.Count -1) -and $char -ne "}";$i=$i+3){
         Write-Host("End at Byte: " + $i)
     }
 }
+
+
+
