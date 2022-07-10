@@ -1,5 +1,12 @@
 # Chia Friends Puzzle findings
 
+## Scripts i use 
+
+I am using a few powershell scripts to query through the metadata and to render these HTML pages so see what it looks like.
+
+- <https://github.com/RudolfAchter/blockchain-stuff/tree/main/docs/chia/chia_friends_puzzle/files>
+
+
 ## Tools and Knowns in the community
 
 Some Links to sites that collect things that are known:
@@ -44,6 +51,11 @@ These tips are from: [scotopic - The race to solve the Chia Friends puzzle](http
   - (2022-07-06) [There are 318 PNGs with transparent backgrounds](#).
   - (2022-07-06) @nezee - 5 NFTs have “XCH” tokens
 
+This i have found in [XCH Foundation Discord](https://discord.gg/zGhYtMwW) - chia-friends-puzzle Channel
+
+- Jon has a theory that the symbols align to greek letters <https://discordapp.com/channels/947974432041881660/993022953421807657/994837116607533057>
+- `The ASCII code 42 is for the asterisk "*" symbol, being a wildcard for everything.` [Phrases from The Hitchhiker's Guide to the Galaxy](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#The_Answer_to_the_Ultimate_Question_of_Life,_the_Universe,_and_Everything_is_42)
+    - <https://www.rapidtables.com/code/text/ascii-table.html>
 
 
 Below my attempts to some parts
@@ -116,12 +128,6 @@ AcornBirdsChinaDingoEdifyFixesGrazeHintsIndexJumboKingsLeafyMedalNicerOxideProve
 ```
 
 ![allKeywords](files/out/2022-07-10-10-52-21.png)
-
-## Scripts i use 
-
-I am using a few powershell scripts to query through the metadata and to render these HTML pages so see what it looks like.
-
-- <https://github.com/RudolfAchter/blockchain-stuff/tree/main/docs/chia/chia_friends_puzzle/files>
 
 
 ## Wrong attempts (possibly)
