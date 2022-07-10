@@ -56,7 +56,6 @@ $allObjects=$objects | ForEach-Object {
 Write-Progress -Activity "Working on Objects" -Status ("Obj $i of " + $objects.Count) -PercentComplete 100
 
 #Get Image Properties
-
 for($i=0; $i -lt $allObjects.Count; $i++){
     Write-Progress -Activity "Getting Alpha Channels" -Status ("$i of " + $allObjects.Count) -PercentComplete ($i / $allObjects.Count * 100)
     $Format=identify -format '%[channels]' $allObjects[$i].File
@@ -69,6 +68,15 @@ for($i=0; $i -lt $allObjects.Count; $i++){
 }
 Write-Progress -Activity "Getting Alpha Channels" -Status ("$i of " + $allObjects.Count) -PercentComplete ($i / $allObjects.Count * 100)
 
+
+$allTraitTypes = $objects.attributes.trait_type | Sort-Object -Unique
+
+$allCols=@("Name","ipfsUrl")
+$allCols+=$allTraitTypes
+
+$allObjects | Sort-Object Name | Select-Object $allCols | Export-Csv -Path ($puzzleBasePath + "/metadata.csv")
+$allObjects | Sort-Object Name | Select-Object $allCols | ConvertTo-Json -Depth 5 | Out-File ($puzzleBasePath + "/metadata.json")
+$allObjects | Sort-Object Name | Select-Object $allCols | ConvertTo-Yaml | Out-File ($puzzleBasePath + "/metadata.yaml")
 
 $allObjects | Export-Clixml allObjects.cli.xml
 $allObjects=Import-Clixml ($puzzleBasePath + "/" + "allObjects.cli.xml")
@@ -219,7 +227,36 @@ $html | Out-File -FilePath ($puzzleBasePath + "/out/timelords_matrix.html")
 
 $out=''
 $allObjects | Where-Object{$_.File.ImageProps.Format -eq "srgba"} | ForEach-Object {
-    $out += (Render-ChiaFriend $_)
+    $out += (Render-ChiaFriend $_ -Class "chia_friend_transparent")
 }
 $html=$header + $out + $footer
 $html | Out-File -FilePath ($puzzleBasePath + "/out/alpha_channel.html")
+
+
+# All Keywords and [Playfair Chipher tool](http://rumkin.com/tools/cipher/playfair.php)
+
+$KeywordFriends.Keyword | Sort-Object $_ | %{Write-Host -NoNewline $_}
+
+# out/2022-07-10-10-52-21.png
+
+
+
+#Byte Data
+[byte[]]$bytes=[System.IO.File]::ReadAllBytes("$filesBasePath/1739.png")
+[byte[]]$bytes=[System.IO.File]::ReadAllBytes("$filesBasePath/1854.png")
+[byte[]]$bytes=[System.IO.File]::ReadAllBytes("$filesBasePath/1805.png")
+[byte[]]$bytes=[System.IO.File]::ReadAllBytes("$filesBasePath/1859.png")
+
+
+$char=""
+$start=341
+Write-Host("Start at Byte: " + $start)
+for($i=$start;$i -le ($bytes.Count -1) -and $char -ne "}";$i=$i+3){
+    $char=[System.Text.Encoding]::ASCII.GetString($bytes[$i])
+    Write-Host ($char) -NoNewline
+
+    if($char -eq "}"){
+        Write-Host("")
+        Write-Host("End at Byte: " + $i)
+    }
+}

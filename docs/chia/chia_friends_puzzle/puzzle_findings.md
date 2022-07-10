@@ -1,12 +1,17 @@
 # Chia Friends Puzzle findings
 
-## Knowns in the community
+## Tools and Knowns in the community
 
 Some Links to sites that collect things that are known:
 
 - [scotopic - The race to solve the Chia Friends puzzle](https://www.scotopic.xyz/the-race-to-solve-the-chia-friends-puzzle/)
 - [chialinks Rarity List](https://chialinks.com/chiafriends/)
 - [Chia Friends Finder](https://chia-friends-finder.deno.dev/)
+- [Cipher Identifier](https://www.dcode.fr/cipher-identifier)
+
+Pretty sure we are talking about some sort of [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher#Example)
+
+- [Timelords -> Keywords -> Coins](https://discordapp.com/channels/947974432041881660/993022953421807657/994788618096873582)
 
 ## New Attempts
 
@@ -14,17 +19,32 @@ My new attempts to find hints on the puzzle.....
 
 These tips are from: [scotopic - The race to solve the Chia Friends puzzle](https://www.scotopic.xyz/the-race-to-solve-the-chia-friends-puzzle/)
 
-Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com):
+- There are 10K friends
+    - 9998 are PNG
+    - 2 are GIF (#880 and #9098)
+  - https://www.bueno.art/ was used for assembling the collection
+  - Seth has mentioned a few things that could be interesting (@jon/ChiaLinks.com) :
+    - K32s and Timelords are best friends
+    - Timelords should prompt a search/lookup on K32s
+    - He didn’t have control over the minting order
+    - you win a “coin” if you have the right “prove”
+  - (2022-07-06) confirmed mint numbers do not matter
+  - (2022-07-06) the unique chia designed NFTs aren’t part of the puzzle (the fact that they are unique)
+  - (2022-07-06) Chia legal team shut down the idea of a mnemonic/prize
+  - (2022-07-06) the solution to the puzzle is something Seth is hoping the community can use afterwards
+  - (2022-07-06) [no steganography involved](#something-significant-in-1854)
+  - Seth provided clue(s):
+    - ["There is something significant about 1854"](#something-significant-about-1854) ( note Amethyst is seth’s birth stone )
+  - (@jon/ChiaLinks.com): Timelords starting point -> K32 -> coin
+  - [There are 25 Timelord bodies with these symbols](#there-are-25-timelords).
+  - [There are 1865 K32 bodies](#1865-k32-bodies).
+  - [There are 26 Keywords with these symbols](#26-keywords).
+    - starts with each letter of the alphabet
+    - not all BIP-39 words
+  - (2022-07-06) [There are 318 PNGs with transparent backgrounds](#).
+  - (2022-07-06) @nezee - 5 NFTs have “XCH” tokens
 
-- K32s and Timelords are best friends
-- Timelords should prompt a search/lookup on K32s
-- He didn’t have control over the minting order
-- you win a "coin" if you have the right "prove"
-- (2022-07-06) confirmed mint numbers do not matter
-- (2022-07-06) the unique chia designed NFTs aren’t part of the puzzle (the fact that they are unique)
-- (2022-07-06) Chia legal team shut down the idea of a mnemonic/prize
-- (2022-07-06) the solution to the puzzle is something Seth is hoping the community can use afterwards
-- (2022-07-06) no steganography involved
+
 
 Below my attempts to some parts
 
@@ -75,6 +95,27 @@ The Numbers and hieroglyphs stay the same.
 | Hieroglyphs 1                                               | Hieroglyphs 2                                               | Hieroglyphs 3                                               | Hieroglyphs 4                                               |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | ![!Hieroglyphs 1](files/hieroglyphs/8011_hieroglyphs_1.png) | ![!Hieroglyphs 2](files/hieroglyphs/7837_hieroglyphs_2.png) | ![!Hieroglyphs 3](files/hieroglyphs/5163_hieroglyphs_3.png) | ![!Hieroglyphs 4](files/hieroglyphs/7631_hieroglyphs_4.png) |
+
+### Transparent Backgrounds
+
+There are 318 PNGs with transparent background (alpha channel in png). I rendered them with a checkerboard background to visualize it.
+
+- [Transparent Background / Alpha Channel](files/out/alpha_channel.html)
+
+
+### Hello can you read it?
+
+- <https://discordapp.com/channels/947974432041881660/993022953421807657/995404456298565654>
+
+@topper used all the keywords and a [Playfair Chipher tool](http://rumkin.com/tools/cipher/playfair.php)
+
+OK basically he literally inserted all Keywords sorted by alphabet
+
+```text
+AcornBirdsChinaDingoEdifyFixesGrazeHintsIndexJumboKingsLeafyMedalNicerOxideProveQuirkRemixSnowyTopazUsageViperWackyXraysYachtZebra
+```
+
+![allKeywords](files/out/2022-07-10-10-52-21.png)
 
 ## Scripts i use 
 
