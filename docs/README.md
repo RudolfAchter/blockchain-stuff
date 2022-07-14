@@ -18,6 +18,7 @@
 - [Chialisp](https://chialisp.com/docs/getting_started/intro_to_chialisp)
 - [ChiaLinks (for everything else)](https://chialinks.com/cats/)
 - [Chia Ecosystem](https://chialinks.com/assets/Chia_Ecosystem_Map_June_2022.pdf): Nice PDF with the most important names and links
+- [Chia Friends Puzzle (the unsolved mystery 😀)](chia/chia_friends_puzzle/puzzle_findings.md)
 
 #### Chia Blockchain explorers
  
