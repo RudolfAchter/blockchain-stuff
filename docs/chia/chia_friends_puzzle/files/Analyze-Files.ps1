@@ -1,9 +1,11 @@
 . "./Chia-Puzzle.ps1"
 . "./config.ps1"
 
-$filesBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
-$origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
+
 $puzzleBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files"
+$filesBasePath="$puzzleBasePath/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
+$origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
+
 
 
 $spaceScanApiKey=$Global:ChiaPuzzle.spacescan.apiKey
@@ -52,7 +54,6 @@ $allObjects=$objects | ForEach-Object {
     $h_props=[ordered]@{
         Name = $obj.name
     }
-
 
     $match=$h_props.name | Select-String -Pattern '#([0-9]+)'
     $file=Get-Item -Path ($filesBasePath + "/" + $match.Matches.Groups[1].Value + ".*") | Where-Object{$_.Extension -in @(".gif",".png",".jpg")}
@@ -147,7 +148,7 @@ $Timelords | ForEach-Object {
     $out+= Render-ChiaFriend -Friends $tl
     $out+='</td>'
     $out+='<td>'
-    $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
+    $K32s | Where-Object{$_.Coins -eq $tl.Symbol}  | Sort-Object Body,Eyes,Hieroglyphs| ForEach-Object {
         $k32=$_
         #$k32
         $out+=Render-ChiaFriend -Friends $k32
@@ -159,7 +160,7 @@ $Timelords | ForEach-Object {
 $out+='</table>'
 $html=$header + $out + $footer
 
-$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html")
+$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html") -Encoding UTF8
 
 
 
