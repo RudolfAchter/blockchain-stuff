@@ -59,6 +59,9 @@ This i have found in [XCH Foundation Discord](https://discord.gg/zGhYtMwW) - chi
 - Jon attemted this [Timelord -> Matching Coin -> Matching Keyword](#timelords---keyword---coins)
 
 
+- [Playfair Cipher](https://en.wikipedia.org/wiki/Playfair_cipher#Example) seems to be a more modern form of [Polybius square](https://en.m.wikipedia.org/wiki/Polybius_square)
+
+
 Below my attempts to some parts
 
 ### Something significant about 1854
@@ -158,6 +161,9 @@ in a second attempt i ignored background so i matched by:
 - Mouth
 
 - [timelord_coin_keyword_match_abem.html](files/out/timelord_coin_keyword_match_abem.html)
+
+
+### 42 the answer to the universe and everything
 
 
 
