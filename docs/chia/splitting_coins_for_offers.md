@@ -9,6 +9,8 @@ tags:
 
 # Splitting Chia Coins for Offers
 
+There were some [Changes in Chia Coin selection algorithm](https://github.com/Chia-Network/chia-blockchain/pull/10967/files). It seems now the smalles possible coin is selectet in transactions. Have to figure out what this exactly means in my scripts.
+
 today i wanted to publish a few chia offers on these Chia offer sites. I want my "customers" to be able to buy the coins in small orders (for DCA or like that). So i decided to make multiple 1 XCH offers. After making one offer and trying to make a second offer i got an error message saying that i am not able to spend anymore coins. What? There is enough XCH in there. Then i remembered i read something how chia coins work.
 
 I transferred my XCH from exchange to this wallet in one transaction. So there was "physically" ONE Coin in my wallet with a "value" of 30 XCH. But i want to make 20 x 1 XCH offers from there. What chia does when you spend coins looks like this:

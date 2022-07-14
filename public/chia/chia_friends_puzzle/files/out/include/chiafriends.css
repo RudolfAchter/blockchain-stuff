@@ -23,7 +23,7 @@ div.chia_friend_transparent img {
     background-image: url(background_checkerboard.png)
 }
 
-div.friend_small {
+div.friend_small { 
     float:left;
     width:130px;
     height:120px;

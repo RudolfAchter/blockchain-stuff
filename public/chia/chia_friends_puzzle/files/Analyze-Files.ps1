@@ -1,9 +1,11 @@
 . "./Chia-Puzzle.ps1"
 . "./config.ps1"
 
-$filesBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
-$origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
+
 $puzzleBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files"
+$filesBasePath="$puzzleBasePath/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
+$origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
+
 
 
 $spaceScanApiKey=$Global:ChiaPuzzle.spacescan.apiKey
@@ -147,7 +149,7 @@ $Timelords | ForEach-Object {
     $out+= Render-ChiaFriend -Friends $tl
     $out+='</td>'
     $out+='<td>'
-    $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | ForEach-Object {
+    $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | Sort-Object Body,Eyes,Hieroglyphs | ForEach-Object {
         $k32=$_
         #$k32
         $out+=Render-ChiaFriend -Friends $k32
