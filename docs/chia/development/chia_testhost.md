@@ -91,3 +91,16 @@ root
 ```
 
 ## Configuring a development environment with ansible
+
+### Prerequesites
+
+So i installed ansible on my ubuntu development machine
+
+```bash
+sudo apt install ansible
+#no clue why i also need this python module. but was necessary
+pip install ansible
+```
+
+### Ansible Inventory and Playbook
+
