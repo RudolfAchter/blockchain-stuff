@@ -94,7 +94,7 @@ root
 
 ### Prerequesites
 
-So i installed ansible on my ubuntu development machine
+So i installed ansible on my ubuntu development machine (not "chiatest" VM. My Development Workstation)
 
 ```bash
 sudo apt install ansible
@@ -103,4 +103,14 @@ pip install ansible
 ```
 
 ### Ansible Inventory and Playbook
+
+Clone this repoository `https://github.com/RudolfAchter/chia-test-environment`
+
+```bash
+git clone https://github.com/RudolfAchter/chia-test-environment
+```
+
+Follow instructions
+
+- <https://github.com/RudolfAchter/chia-test-environment>
 
