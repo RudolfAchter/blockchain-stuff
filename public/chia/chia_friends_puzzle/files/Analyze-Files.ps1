@@ -55,7 +55,6 @@ $allObjects=$objects | ForEach-Object {
         Name = $obj.name
     }
 
-
     $match=$h_props.name | Select-String -Pattern '#([0-9]+)'
     $file=Get-Item -Path ($filesBasePath + "/" + $match.Matches.Groups[1].Value + ".*") | Where-Object{$_.Extension -in @(".gif",".png",".jpg")}
     $h_props.Add("file",$file)
@@ -149,7 +148,7 @@ $Timelords | ForEach-Object {
     $out+= Render-ChiaFriend -Friends $tl
     $out+='</td>'
     $out+='<td>'
-    $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | Sort-Object Body,Eyes,Hieroglyphs | ForEach-Object {
+    $K32s | Where-Object{$_.Coins -eq $tl.Symbol}  | Sort-Object Body,Eyes,Hieroglyphs| ForEach-Object {
         $k32=$_
         #$k32
         $out+=Render-ChiaFriend -Friends $k32
@@ -161,7 +160,7 @@ $Timelords | ForEach-Object {
 $out+='</table>'
 $html=$header + $out + $footer
 
-$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html")
+$html | Out-File -FilePath ($puzzleBasePath + "/out/timelord_k32_best_friends.html") -Encoding UTF8
 
 
 
@@ -362,3 +361,93 @@ for($i=$start;$i -le ($bytes.Count -1) -and $char -ne "}";$i=$i+3){
 
 
 
+
+
+$out=''
+$K32s | Where-Object {$_.Body -like "*amethyst*" -or $_.Body -like "*jade*"} |
+    Sort-Object {$_.Background} |
+    ForEach-Object {
+        $k32=$_
+        $out+=Render-ChiaFriend $_
+    }
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/k32_amethyst_jade_order_background.html")
+
+
+$out=''
+$K32s | Where-Object {($_.Body -like "*amethyst*" -or $_.Body -like "*jade*") -and $null -ne $_.Coins} |
+    Sort-Object {$_.Coins} |
+    ForEach-Object {
+        $k32=$_
+        $out+=Render-ChiaFriend $_
+    }
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/k32_amethyst_jade_order_coins.html")
+
+
+
+$K32s | Where-Object {($_.Coins -eq "Leaf")}
+
+$out=''
+$K32s | Where-Object {$null -ne $_.Coins} |
+    Sort-Object {$_.Coins} |
+    ForEach-Object {
+        $k32=$_
+        $out+=Render-ChiaFriend $_
+    }
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/k32_coins.html")
+
+
+# 42 the answer to everything
+
+($K32s | Where-Object {$_.Body -like "*gold*" -and $null -ne $_.Coins} | Measure-Object).Count
+($K32s | Where-Object {$_.Body -like "*jade*" -and $null -ne $_.Coins} | Measure-Object).Count
+($K32s | Where-Object {$_.Body -like "*amethyst*" -and $null -ne $_.Coins} | Measure-Object).Count
+
+"K32 Body Groups"
+
+$K32s | Where-Object {$null -ne $_.Coins} | Group-Object Body | ft Count,Name
+
+"Coin Groups"
+
+$allObjects | Group-Object Coins | ft Count,Name
+
+$allObjects | Group-Object Artifacts | Sort-Object Count
+
+$allTraitTypes | ForEach-Object {
+    $allObjects | Group-Object $_ | Sort-Object Count
+} | Where-Object Count -eq 42
+
+
+
+$out=''
+$out+='<h1>42 Jade K32s</h1>'
+$out+=$K32s | Where-Object {$_.Body -like "*jade*" -and $null -ne $_.Coins} | ForEach-Object {Render-ChiaFriend $_ -Class "friend_small" -Properties @("Name")}
+$out+='<hr style="border-top: 2px solid grey; margin-top:10px; clear:both;">'
+
+$allObjects | Where-Object {$null -ne $_.Coins} | Group-Object Coins | ForEach-Object {
+    $group=$_
+    $out+='<h1>42 ' + $group.Name + '</h1>'
+    $out+=$group.Group | ForEach-Object{Render-ChiaFriend $_ -Class "friend_small" -Properties @("Name")}
+    $out+='<hr style="border-top: 2px solid grey; margin-top:10px; clear:both;">'
+}
+
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/42_the_answer.html")
+
+
+$out=''
+$out+='<h1>42 Jade K32s</h1>'
+$out+=$K32s | Where-Object {$_.Body -like "*jade*" -and $null -ne $_.Coins} | ForEach-Object {Render-ChiaFriend $_ -Class "friend_small" -Properties @("Name")}
+$out+='<hr style="border-top: 2px solid grey; margin-top:10px; clear:both;">'
+
+$allObjects | Where-Object {$null -ne $_.Coins -and $_.Body -like "*jade*"} | Group-Object Coins | ForEach-Object {
+    $group=$_
+    $out+='<h1>' + $group.Count + " " + $group.Name + '</h1>'
+    $out+=$group.Group | ForEach-Object{Render-ChiaFriend $_ -Class "friend_small" -Properties @("Name")}
+    $out+='<hr style="border-top: 2px solid grey; margin-top:10px; clear:both;">'
+}
+
+$html=$header + $out + $footer
+$html | Out-File -FilePath ($puzzleBasePath + "/out/42_jade.html")
