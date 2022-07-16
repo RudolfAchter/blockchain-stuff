@@ -1189,20 +1189,13 @@ If you prefer to not be root you should add <code>sudo</code> to all these (lxc 
 <h2 id="putting-it-all-together">putting it all together</h2>
 <p>Fast forward launching an image when lxd / lxc is prepared</p>
 <p>Launch a image</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lxc launch images:ubuntu/jammy/cloud chia-full01
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lxc launch images:ubuntu/focal/cloud chia-full01
 </code></pre></div>
-<p>Prepare it for ansible.
-For some reason you need to copy and paste the sudo lxc lines one after another</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">NODE</span><span class="o">=</span><span class="s2">&quot;chia-full01&quot;</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">SSHPUBKEY</span><span class="o">=</span><span class="sb">`</span>cat ~/.ssh/id_rsa.pub<span class="sb">`</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;apt install -y openssh-server&#39;</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;useradd -m -G sudo -s /bin/bash ansible&#39;</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;echo ansible:chiatest | chpasswd&#39;</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;mkdir /home/ansible/.ssh&#39;</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s2">&quot;echo </span><span class="nv">$SSHPUBKEY</span><span class="s2"> &gt; /home/ansible/.ssh/authorized_keys&quot;</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;chown ansible:ansible /home/ansible/.ssh&#39;</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;chown ansible:ansible /home/ansible/.ssh/authorized_keys&#39;</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;chmod 600 /home/ansible/.ssh/authorized_keys&#39;</span>
+<p>Prepare it for ansible.</p>
+<ul>
+<li><a href="https://github.com/RudolfAchter/chia-test-environment/blob/main/src/lxd/prepare_lxd_guest.sh">https://github.com/RudolfAchter/chia-test-environment/blob/main/src/lxd/prepare_lxd_guest.sh</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bash ./prepare_lxd_guest.sh
 </code></pre></div>
 <h2 id="configuring-a-development-environment-with-ansible">Configuring a development environment with ansible</h2>
 <h3 id="prerequesites">Prerequesites</h3>
