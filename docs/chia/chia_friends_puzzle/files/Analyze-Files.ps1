@@ -6,6 +6,8 @@ $puzzleBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/f
 $filesBasePath="$puzzleBasePath/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
 $origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
 
+#Chia Friends Collection ID
+$cfCollId="col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl"
 
 
 $spaceScanApiKey=$Global:ChiaPuzzle.spacescan.apiKey
@@ -16,24 +18,30 @@ $h_headers=@{
     "x-api-version"="v0.1"
 }
 
+
+#SpaceScan Test getting a CAT
 $cat=Invoke-RestMethod -Uri "https://api2.spacescan.io/v0.1/xch/cat/44a1d78b820f6404de3cc45b34932178f9ac8f3d9114db279f657ca83fa751b7" `
     -Headers $h_headers -Method GET -ContentType "application/json"
 
-<#
+
 #FIXME funktioniert nicht: Support Anfrage bei spacescan.ip Support <https://discordapp.com/channels/919680063513968701/984558089401417808/995630948311908362>
+#WORKAROUND: <https://discordapp.com/channels/919680063513968701/984558089401417808/996144148488933407>
+$nftCollectionResult=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/${cfCollId}?x-auth-id=${spaceScanApiKey}&coin=xch&version=v0.1&count=100" `
+    <#-Headers $h_headers#> -Method GET -ContentType "application/json"
+$nftCollection=$nftCollectionResult.data
 
-$nftCollection=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl" `
-    -Headers $h_headers -Method GET -ContentType "application/json"
-
+$nftCollection.nft_info.updater_puzhash | Group-Object | ft Count,Name
+<#
+FIXME does not work this way
 $nftCollection=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl" `
     -Headers $h_headers -Method POST -ContentType "application/json" -Body ($h_headers | ConvertTo-Json)
-
+#>
     #nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag
 
 $singleNft=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag" `
     -Headers $h_headers -Method GET -ContentType "application/json" -Body ($h_headers | ConvertTo-Json)
 
-#>
+
 
 $objects=Get-ChildItem -Path $filesBasePath -Filter *.json | ForEach-Object {
     $JsonFile=$_

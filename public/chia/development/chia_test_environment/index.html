@@ -626,6 +626,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    putting it all together
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuring-a-development-environment-with-ansible" class="md-nav__link">
     Configuring a development environment with ansible
   </a>
@@ -849,12 +856,74 @@
       
       
         <label class="md-nav__link" for="__nav_7">
+          Shell tricks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Shell tricks" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Shell tricks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../shell_tricks/bash_tricks/" class="md-nav__link">
+        History search with Arrow Keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../shell_tricks/powershell_tricks/" class="md-nav__link">
+        Powershell Tricks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
           Spacemesh
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Spacemesh" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Spacemesh
         </label>
@@ -891,18 +960,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_9">
           Weltwirtschaft
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Weltwirtschaft" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Weltwirtschaft
         </label>
@@ -971,6 +1040,13 @@
         <li class="md-nav__item">
   <a href="#deploying-ubuntu-image-for-my-testhost" class="md-nav__link">
     Deploying Ubuntu Image for my Testhost
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    putting it all together
   </a>
   
 </li>
@@ -1110,22 +1186,40 @@ If you prefer to not be root you should add <code>sudo</code> to all these (lxc 
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>root@chiatest:~# whoami
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>root
 </code></pre></div>
+<h2 id="putting-it-all-together">putting it all together</h2>
+<p>Fast forward launching an image when lxd / lxc is prepared</p>
+<p>Launch a image</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lxc launch images:ubuntu/jammy/cloud chia-full01
+</code></pre></div>
+<p>Prepare it for ansible.
+For some reason you need to copy and paste the sudo lxc lines one after another</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">NODE</span><span class="o">=</span><span class="s2">&quot;chia-full01&quot;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">SSHPUBKEY</span><span class="o">=</span><span class="sb">`</span>cat ~/.ssh/id_rsa.pub<span class="sb">`</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;apt install -y openssh-server&#39;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;useradd -m -G sudo -s /bin/bash ansible&#39;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;echo ansible:chiatest | chpasswd&#39;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;mkdir /home/ansible/.ssh&#39;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s2">&quot;echo </span><span class="nv">$SSHPUBKEY</span><span class="s2"> &gt; /home/ansible/.ssh/authorized_keys&quot;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;chown ansible:ansible /home/ansible/.ssh&#39;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;chown ansible:ansible /home/ansible/.ssh/authorized_keys&#39;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>sudo lxc <span class="nb">exec</span> <span class="nv">$NODE</span> -- /bin/bash -c <span class="s1">&#39;chmod 600 /home/ansible/.ssh/authorized_keys&#39;</span>
+</code></pre></div>
 <h2 id="configuring-a-development-environment-with-ansible">Configuring a development environment with ansible</h2>
 <h3 id="prerequesites">Prerequesites</h3>
 <p>So i installed ansible on my ubuntu development machine (not "chiatest" VM. My Development Workstation)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo apt install ansible
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">#no clue why i also need this python module. but was necessary</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>pip install ansible
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo apt install ansible
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1">#no clue why i also need this python module. but was necessary</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>pip install ansible
 </code></pre></div>
 <h3 id="ansible-inventory-and-playbook">Ansible Inventory and Playbook</h3>
 <p>Clone this repoository <code>https://github.com/RudolfAchter/chia-test-environment</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git clone https://github.com/RudolfAchter/chia-test-environment
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git clone https://github.com/RudolfAchter/chia-test-environment
 </code></pre></div>
 <p>Follow instructions</p>
 <ul>
 <li><a href="https://github.com/RudolfAchter/chia-test-environment">https://github.com/RudolfAchter/chia-test-environment</a></li>
 </ul>
-<p>Basically what the ansible playbook dues</p>
+<p>Basically what the ansible playbook does</p>
 <ul>
 <li><a href="https://github.com/RudolfAchter/chia-test-environment/blob/main/src/ansible/playbook/chia-test.yml">https://github.com/RudolfAchter/chia-test-environment/blob/main/src/ansible/playbook/chia-test.yml</a></li>
 <li>It installs ubuntu desktop</li>

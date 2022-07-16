@@ -86,6 +86,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://rudolfachter.github.io/blockchain-stuff/public/shell_tricks/bash_tricks/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rudolfachter.github.io/blockchain-stuff/public/shell_tricks/powershell_tricks/</loc>
+         <lastmod>2022-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://rudolfachter.github.io/blockchain-stuff/public/spacemesh/</loc>
          <lastmod>2022-07-16</lastmod>
          <changefreq>daily</changefreq>
