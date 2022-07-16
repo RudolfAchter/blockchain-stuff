@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://rudolfachter.github.io/blockchain-stuff/public/chia/development/chia_testhost/">
+        <link rel="canonical" href="https://rudolfachter.github.io/blockchain-stuff/public/chia/development/chia_test_environment/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
-        <title>Chia Testhost for Developing things - Blockchain Stuff</title>
+        <title>Chia Test Environment - Blockchain Stuff</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chia-testhost-for-developing-things" class="md-skip">
+        <a href="#chia-test-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chia Testhost for Developing things
+              Chia Test Environment
             
           </span>
         </div>
@@ -581,12 +581,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Chia Testhost for Developing things
+          Chia Test Environment
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Chia Testhost for Developing things
+        Chia Test Environment
       </a>
       
         
@@ -656,6 +656,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtualization_lxd/" class="md-nav__link">
+        Lightweight Virtualization environment with lxd
+      </a>
     </li>
   
 
@@ -1045,16 +1059,19 @@
 
 
 
-<h1 id="chia-testhost-for-developing-things">Chia Testhost for Developing things</h1>
+<h1 id="chia-test-environment">Chia Test Environment</h1>
 <p>I want to develop some little tools for myself.
 But i dont want to play around with my real money in the case i mess it up.
-So i need a test host connected to chia testnet.</p>
+So i need a test environment connected to chia testnet</p>
 <h2 id="deploying-lxd">Deploying lxd</h2>
-<p>I use lxd on rasbian for this.</p>
+<p>I use lxd on rasbian (arm64 / 64 bit arm) and on my workstation (amd64) for this.</p>
 <ul>
 <li><a href="https://snapcraft.io/install/lxd/raspbian">https://snapcraft.io/install/lxd/raspbian</a></li>
 </ul>
-<p>Install and configure lxd / lxc in a way it works for you.</p>
+<p>Install and configure lxd / lxc in a way it works for you. This is what i did:</p>
+<ul>
+<li><a href="../virtualization_lxd/">Virtualization with lxd</a></li>
+</ul>
 <h2 id="what-environment-am-i-on">What environment am i on</h2>
 <p>To get the right packages i want to know on which environment i am working.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>lsb_release -a
@@ -1108,6 +1125,14 @@ If you prefer to not be root you should add <code>sudo</code> to all these (lxc 
 <ul>
 <li><a href="https://github.com/RudolfAchter/chia-test-environment">https://github.com/RudolfAchter/chia-test-environment</a></li>
 </ul>
+<p>Basically what the ansible playbook dues</p>
+<ul>
+<li><a href="https://github.com/RudolfAchter/chia-test-environment/blob/main/src/ansible/playbook/chia-test.yml">https://github.com/RudolfAchter/chia-test-environment/blob/main/src/ansible/playbook/chia-test.yml</a></li>
+<li>It installs ubuntu desktop</li>
+<li>Installs all necessary packages for chia full node</li>
+<li>installs xrdp and git</li>
+</ul>
+<p>So you have a virtual desktop environment where you can play around with your chia full node.</p>
 
               
             </article>
@@ -1139,13 +1164,13 @@ If you prefer to not be root you should add <code>sudo</code> to all these (lxc 
       
       
         
-        <a href="../../../ethereum/zksync_layer2/" class="md-footer__link md-footer__link--next" aria-label="Next: ZKSync als Layer2 Lösung für Storj Ethereum" rel="next">
+        <a href="../virtualization_lxd/" class="md-footer__link md-footer__link--next" aria-label="Next: Lightweight Virtualization environment with lxd" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              ZKSync als Layer2 Lösung für Storj Ethereum
+              Lightweight Virtualization environment with lxd
             </div>
           </div>
           <div class="md-footer__button md-icon">

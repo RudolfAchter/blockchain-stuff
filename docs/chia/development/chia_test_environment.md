@@ -8,19 +8,21 @@ tags:
     - Development
 ---
 
-# Chia Testhost for Developing things
+# Chia Test Environment
 
 I want to develop some little tools for myself.
 But i dont want to play around with my real money in the case i mess it up.
-So i need a test host connected to chia testnet.
+So i need a test environment connected to chia testnet
 
 ## Deploying lxd
 
-I use lxd on rasbian for this.
+I use lxd on rasbian (arm64 / 64 bit arm) and on my workstation (amd64) for this.
 
 - <https://snapcraft.io/install/lxd/raspbian>
 
-Install and configure lxd / lxc in a way it works for you.
+Install and configure lxd / lxc in a way it works for you. This is what i did:
+
+- [Virtualization with lxd](virtualization_lxd.md)
 
 ## What environment am i on
 
@@ -114,3 +116,11 @@ Follow instructions
 
 - <https://github.com/RudolfAchter/chia-test-environment>
 
+Basically what the ansible playbook dues
+
+- <https://github.com/RudolfAchter/chia-test-environment/blob/main/src/ansible/playbook/chia-test.yml>
+- It installs ubuntu desktop
+- Installs all necessary packages for chia full node
+- installs xrdp and git
+
+So you have a virtual desktop environment where you can play around with your chia full node.
