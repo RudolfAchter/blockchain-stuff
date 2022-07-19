@@ -1,6 +1,7 @@
 function Render-ChiaFriend {
     [CmdletBinding()]
     param (
+        [Parameter(ValueFromPipeline=$true)]
         $Friends,
         $Properties,
         $Class="chia_friend"
@@ -12,7 +13,7 @@ function Render-ChiaFriend {
         $out+='<div class="' + $Class + '">' + "`r`n"
         $out+='<img src="' + $Friend.ipfsUrl + '" style="width:100px"><br/>' + "`r`n"
         ForEach ($prop in $Friend.PsObject.Properties){
-            if($null -ne $prop -and "" -ne $prop -and $prop.Name -notin @("file","ipfsUrl")){
+            if($null -ne $prop -and "" -ne $prop -and $prop.Name -notin @("file","meta","ipfsUrl","ipfsMeta")){
                 if($null -ne $Properties){
                     if($prop.Name -in $Properties){
                         $out += $prop.Name + ': ' + $prop.Value + '<br/>' + "`r`n"
@@ -30,6 +31,36 @@ function Render-ChiaFriend {
 }
     
 
+
+function Show-ChiaFriend {
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline=$true)]
+        $Friends,
+        $Properties,
+        $Class="chia_friend"
+    )
+
+    Begin {
+        
+    }
+    
+    Process {
+        $Friends | ForEach-Object {
+            $Friend=$_
+            $filterProps=@()
+            ForEach ($prop in $Friend.PsObject.Properties){
+                if($null -ne $prop -and "" -ne $prop -and $prop.Name -notin @("file","meta","ipfsUrl","ipfsMeta")){
+                    $filterProps+=$prop.Name
+                }
+            }
+            $Friend | Select-Object $filterProps
+        }    
+    }
+
+    End{}
+
+}
 
 
 

@@ -1,10 +1,11 @@
-. "./Chia-Puzzle.ps1"
-. "./config.ps1"
-
-
 $puzzleBasePath="/home/rudi/git/blockchain-stuff/docs/chia/chia_friends_puzzle/files"
 $filesBasePath="$puzzleBasePath/bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4"
 $origUrlBase="https://bafybeigzcazxeu7epmm4vtkuadrvysv74lbzzbl2evphtae6k57yhgynp4.ipfs.nftstorage.link"
+
+
+. "$puzzleBasePath/Chia-Puzzle.ps1"
+. "$puzzleBasePath/config.ps1"
+
 
 #Chia Friends Collection ID
 $cfCollId="col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl"
@@ -24,13 +25,15 @@ $cat=Invoke-RestMethod -Uri "https://api2.spacescan.io/v0.1/xch/cat/44a1d78b820f
     -Headers $h_headers -Method GET -ContentType "application/json"
 
 
+# Instead of Spacescan Query your own RPC API
+
 #FIXME funktioniert nicht: Support Anfrage bei spacescan.ip Support <https://discordapp.com/channels/919680063513968701/984558089401417808/995630948311908362>
 #WORKAROUND: <https://discordapp.com/channels/919680063513968701/984558089401417808/996144148488933407>
-$nftCollectionResult=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/${cfCollId}?x-auth-id=${spaceScanApiKey}&coin=xch&version=v0.1&count=100" `
-    <#-Headers $h_headers#> -Method GET -ContentType "application/json"
-$nftCollection=$nftCollectionResult.data
-
-$nftCollection.nft_info.updater_puzhash | Group-Object | ft Count,Name
+# $nftCollectionResult=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/${cfCollId}?x-auth-id=${spaceScanApiKey}&coin=xch&version=v0.1&count=100" `
+#     <#-Headers $h_headers#> -Method GET -ContentType "application/json"
+# $nftCollection=$nftCollectionResult.data
+# 
+# $nftCollection.nft_info.updater_puzhash | Group-Object | ft Count,Name
 <#
 FIXME does not work this way
 $nftCollection=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collection/col1z0ef7w5n4vq9qkue67y8jnwumd9799sm50t8fyle73c70ly4z0ws0p2rhl" `
@@ -38,8 +41,8 @@ $nftCollection=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/collect
 #>
     #nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag
 
-$singleNft=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag" `
-    -Headers $h_headers -Method GET -ContentType "application/json" -Body ($h_headers | ConvertTo-Json)
+#$singleNft=Invoke-RestMethod -Uri "https://api2.spacescan.io/api/nft/nft12l69ttcxm8zdk3jc6z3dlhtvudja270sm4k7cw3rhvhgur9lrntqly5hag" `
+#    -Headers $h_headers -Method GET -ContentType "application/json" -Body ($h_headers | ConvertTo-Json)
 
 
 
@@ -65,8 +68,11 @@ $allObjects=$objects | ForEach-Object {
 
     $match=$h_props.name | Select-String -Pattern '#([0-9]+)'
     $file=Get-Item -Path ($filesBasePath + "/" + $match.Matches.Groups[1].Value + ".*") | Where-Object{$_.Extension -in @(".gif",".png",".jpg")}
+    $meta=Get-Item -Path ($filesBasePath + "/" + $match.Matches.Groups[1].Value + ".*") | Where-Object{$_.Extension -in @(".json")}
     $h_props.Add("file",$file)
+    $h_props.Add("meta",$meta)
     $h_props.Add("ipfsUrl",($origUrlBase + "/" + $file.Name))
+    $h_props.Add("ipfsMeta",($origUrlBase + "/" + $meta.Name))
 
     $traitTypes=$obj.attributes.trait_type
 
@@ -121,6 +127,16 @@ $allObjects=Import-Clixml ($puzzleBasePath + "/" + "allObjects.cli.xml")
 #$allObjects | Select Name,Accessories,Artifacts,Background,Body,Coins,Expression,Eyes,Hieroglyphs,Keyword,Mouth | Out-ConsoleGridView
 #$allObjects | Select Accessories,Artifacts,Background,Body,Coins,Expression,Eyes,Hieroglyphs | Out-ConsoleGridView
 
+
+for($i=0;$i -lt $allObjects.count; $i++){
+    $match=$allObjects[$i].Name | Select-String -Pattern 'Chia Friends #([0-9]+)'
+    $number=$match.Matches.Groups[1].Value
+    $allObjects[$i] | Add-Member -MemberType NoteProperty -Name Number -Value $number -Force
+
+}
+
+
+
 $Timelords=@()
 $pattern='Timelord \(([^\)]+)\)'
 $allObjects | Where-Object {$_.Body -match $pattern} | ForEach-Object {
@@ -142,8 +158,8 @@ $allObjects | Where-Object {$_.Body -match $pattern} | ForEach-Object {
 
 $Coins=$allObjects| Where-Object {$null -ne $_.Coins}
 # Header and Footer preparation for HTML
-$header=(Get-Content -Path './include/header.html') -split '`r`n'
-$footer=(Get-Content -Path './include/footer.html') -split '`r`n'
+$header=(Get-Content -Path "$puzzleBasePath/include/header.html") -split '`r`n'
+$footer=(Get-Content -Path "$puzzleBasePath/include/footer.html") -split '`r`n'
 
 # All Timelords Grouped with K32 with same Symbol
 
@@ -345,8 +361,6 @@ $KeywordFriends.Keyword | Sort-Object $_ | %{Write-Host -NoNewline $_}
 
 # out/2022-07-10-10-52-21.png
 
-
-
 #Byte Data
 [byte[]]$bytes=[System.IO.File]::ReadAllBytes("$filesBasePath/1739.png")
 [byte[]]$bytes=[System.IO.File]::ReadAllBytes("$filesBasePath/1854.png")
@@ -459,3 +473,48 @@ $allObjects | Where-Object {$null -ne $_.Coins -and $_.Body -like "*jade*"} | Gr
 
 $html=$header + $out + $footer
 $html | Out-File -FilePath ($puzzleBasePath + "/out/42_jade.html")
+
+
+$tlSum=$Timelords | ForEach-Object {
+    $tl=$_
+    #$tl.Symbol
+    $hgSum=$K32s | Where-Object{$_.Coins -eq $tl.Symbol}  | Measure-Object -Property Hieroglyphs -Sum
+    $tl | Add-Member -MemberType NoteProperty -Name HgSum -Value $hgSum.Sum
+    $tl
+}
+
+
+$tlBin=$Timelords | ForEach-Object {
+    $tl=$_
+    #$tl.Symbol
+    $binstr=""
+    $K32s | Where-Object{$_.Coins -eq $tl.Symbol} | Sort-Object Number | ForEach-Object {
+        $k32=$_
+        #("'" + $k32.Eyes + "'")
+        if($k32.Eyes -ne "Closed"){
+            $binstr= "1" + $binstr
+        }
+        else{
+            $binstr= "0" + $binstr
+        }
+    }
+    $int = [Convert]::ToInt32($binstr,2)
+    $int
+
+    $tl | Add-Member -MemberType NoteProperty -Name HgSum -Value $hgSum.Sum -Force
+    $tl | Add-Member -MemberType NoteProperty -Name BinStr -Value $binstr -Force
+    $tl
+}
+
+
+$tlGroups=$Timelords | ForEach-Object {
+    $tl=$_
+    #$tl.Symbol
+    $sum=($K32s | Where-Object{$_.Coins -eq $tl.Symbol} | Measure-Object -Property Hieroglyphs -Sum).Count
+    $tl | Add-Member -MemberType NoteProperty -Name HgSum -Value $sum -Force
+    $tl
+}
+
+$tlGroups | ft Name,HgSum
+
+$allObjects | Group-Object Coins

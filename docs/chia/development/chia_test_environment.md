@@ -123,6 +123,17 @@ sudo apt install ansible
 pip install ansible
 ```
 
+### Create your ssh private public keypair
+
+if you haven't already. Create a ssh private public keypair
+
+```bash
+ssh-keygen -t rsa -b 4096
+```
+
+Save it in default path `~/.ssh/id_rsa`. Ansible will be using key and public-key from default path.
+
+
 ### Ansible Inventory and Playbook
 
 Clone this repoository `https://github.com/RudolfAchter/chia-test-environment`
@@ -143,3 +154,40 @@ Basically what the ansible playbook does
 - installs xrdp and git
 
 So you have a virtual desktop environment where you can play around with your chia full node.
+
+## Remote Development
+
+My virtual Machine does not hav as many recsources as my workstation has. And via Remote Desktop Protocol, VNC or whatever your developmet will not run as smooth as on a local machine. I am using [VS Code](https://code.visualstudio.com/) as my development IDE. One feature i like very much is [Remote Development using SSH](https://code.visualstudio.com/docs/remote/ssh).Install [Remove Development Extensionpack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) in VsCode.
+
+In VS Code Press `F1` or `CTRL + P` and run command "Remote-SSH: Add new Host
+
+![](2022-07-18-16-27-23.png)
+
+Beforehand your public key must be in file `~/.ssh/authorized_keys` of user chia. If you installed the test environment with my ansible script then the key should already be there. Enter the ssh command to login to your remote SSH Host. For example `ssh chia@chia-wallet01.fritz.box`
+
+![](2022-07-18-16-59-50.png)
+
+per default the ssh config file of your user will be updated. You simply can press enter again.
+
+![](2022-07-18-17-01-02.png)
+
+After adding this Host you can connect to it.
+
+![](2022-07-18-17-02-35.png)
+
+Choose you connected host and press enter
+
+![](2022-07-18-17-03-13.png)
+
+A new vscode Window opens. Look at the top of the new window. Maybe VsCode asks you the host Type of the new Host to install a vscode Server. Choose Linux if you are asked.
+
+Start a new Terminal there when you are connected
+
+![](2022-07-18-17-04-33.png)
+
+You see you are now `chia@chia-wallet01`
+
+![](2022-07-18-17-06-16.png)
+
+
+
