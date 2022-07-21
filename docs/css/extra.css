@@ -85,7 +85,7 @@ img.story_pic {
   border:10px solid var(--md-typeset-table-color)
 }
 
-@media (min-width: 0){
+@media (min-width: 0) or (orientation:landscape) {
   img.story_pic_left {
     display:block;
     margin:0em;
