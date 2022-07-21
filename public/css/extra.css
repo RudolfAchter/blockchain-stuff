@@ -86,6 +86,10 @@ img.story_pic {
 }
 
 @media (max-width: 799px) {
+  img {
+    max-width:90%;
+  }
+
   img.story_pic_left {
     display: block;
     margin: 0em;
