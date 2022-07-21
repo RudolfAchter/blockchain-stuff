@@ -22,6 +22,8 @@ Chiania Kingdom is recruiting warriors to against monsters in Black Forest.
 
 ![](media/01_quest_start.jpg){style="max-width:380px" class="story_pic_left"}
 
+<hr style="clear:both">
+
 ## Slimy monsters creep out of the forest
 
 ![](https://pbs.twimg.com/media/FXvtsLjaUAABMyx?format=png&name=small){class="story_pic_left" style="max-width:380px;"}

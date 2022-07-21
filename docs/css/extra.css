@@ -58,6 +58,10 @@ div.chia_rpg_story {
   font-size: 1em;
 }
 
+div.chia_rpg_story hr {
+  clear: both;
+}
+
 table.item_table{
   border-collapse: collapse;
   border: 1px solid var(--md-typeset-table-color)
