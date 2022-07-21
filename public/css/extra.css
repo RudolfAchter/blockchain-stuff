@@ -80,13 +80,16 @@ table.item_table span{
 
 }
 
-img.story_pic {
-  margin:0em;
-  border:10px solid var(--md-typeset-table-color)
-}
+
 
 @media (max-width: 799px) {
   img {
+    max-width:100%;
+  }
+
+  img.story_pic {
+    margin:0em;
+    border:10px solid var(--md-typeset-table-color);
     max-width:100%;
   }
 
@@ -107,6 +110,12 @@ img.story_pic {
 }
 
 @media (min-width: 800px) {
+  img.story_pic {
+    margin:0em;
+    border:10px solid var(--md-typeset-table-color);
+    max-width:400px;
+  }
+
   img.story_pic_left {
     margin:0em 1em 0em 0em;
     float: left;

@@ -36,7 +36,7 @@ This is the gaming loop so far:
 - [A quest is announced (Discord or Twitter)](https://discordapp.com/channels/994949585657143296/995496698086432838)
 - [You register for the quest](https://discordapp.com/channels/994949585657143296/998007766297870416)
 
-![](https://cdn.discordapp.com/attachments/995478713561001984/998168622650359808/Chia_Inventory_Gaming_System.gif){ style="max-width:400px;" }
+![](https://cdn.discordapp.com/attachments/995478713561001984/998168622650359808/Chia_Inventory_Gaming_System.gif){class="story_pic"}
 
 ### Fighting System
 
@@ -54,7 +54,7 @@ Current state is:
         - Pierce
         - Magic
 
-![](https://cdn.discordapp.com/attachments/995478713561001984/998168955367719007/Slime.gif){ style="max-width:400px;"}
+![](https://cdn.discordapp.com/attachments/995478713561001984/998168955367719007/Slime.gif){class="story_pic"}
 
 ### Where to play?
 
