@@ -8,6 +8,8 @@ tags:
   - NFT
 ---
 
+<div class="chia_rpg_story" markdown="1">
+
 # Chia Inventory RPG Game
 
 ## [Introduction](https://discordapp.com/channels/994949585657143296/995478713561001984/995479550848933930)
@@ -52,4 +54,10 @@ Current state is:
         - Pierce
         - Magic
 
-![](https://cdn.discordapp.com/attachments/995478713561001984/998168955367719007/Slime.gif){ style="max-width:400px;" }
+![](https://cdn.discordapp.com/attachments/995478713561001984/998168955367719007/Slime.gif){ style="max-width:400px;"}
+
+### Where to play?
+
+At this time "Chia Inventory - the Chianian Quest" is played in Discord. [Join here (Discord Channel - Chia Inventory)](https://discord.gg/pDGJf5f6)
+
+</div>

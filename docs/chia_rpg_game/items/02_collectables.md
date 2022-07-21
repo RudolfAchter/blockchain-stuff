@@ -8,6 +8,8 @@ tags:
   - NFT
 ---
 
+<div class="chia_rpg_story" markdown="1">
+
 # Collectables
 
 - <https://www.spacescan.io/xch/nft/collection/col16fpva26fhdjp2echs3cr7c30gzl7qe67hu9grtsjcqldz354asjsyzp6wx>
@@ -25,3 +27,5 @@ After defeating the slimes the adventurers canned them into bottles. Maybe they 
 </td></tr>
 
 </table>
+
+</div>
