@@ -36,3 +36,25 @@
 div.lightgallery {
   display: inline;
 }
+
+img.game_item {
+  width: 150px;
+}
+
+table.item_table{
+  border-collapse: collapse;
+  border: 1px solid var(--md-typeset-table-color)
+}
+
+table.item_table td{
+  min-width: 150px;
+  padding:10px;
+  border: 1px solid var(--md-typeset-table-color);
+}
+
+table.item_table span{
+
+  border: 2px solid var(--md-typeset-table-color);
+  padding: 2px;
+
+}
