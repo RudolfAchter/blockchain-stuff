@@ -129,7 +129,6 @@ table.item_table span{
   td:before,
   td > span {
     display: table-cell;
-    padding: 7px 13px; /* optional */
   }
   td:before {
     content: attr(data-label);
