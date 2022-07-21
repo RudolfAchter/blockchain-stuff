@@ -86,27 +86,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia/nft/game/chia_inventory/01_chia_inventory/</loc>
-         <lastmod>2022-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia/nft/game/chia_inventory/02_story/</loc>
-         <lastmod>2022-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia/nft/game/chia_inventory/items/collectables/</loc>
-         <lastmod>2022-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia/nft/game/chia_inventory/items/equipment/</loc>
-         <lastmod>2022-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia/nft/game/chia_universe/</loc>
+         <lastmod>2022-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia_inventory/</loc>
+         <lastmod>2022-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia_inventory/02_story/</loc>
+         <lastmod>2022-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia_inventory/items/collectables/</loc>
+         <lastmod>2022-07-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rudolfachter.github.io/blockchain-stuff/public/chia_inventory/items/equipment/</loc>
          <lastmod>2022-07-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
