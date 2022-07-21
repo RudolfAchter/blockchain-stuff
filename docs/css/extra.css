@@ -85,17 +85,17 @@ img.story_pic {
   border:10px solid var(--md-typeset-table-color)
 }
 
-@media (max-width: 799px){
+@media (max-width: 799px) {
   img.story_pic_left {
-    display:block;
-    margin:0em;
-    border:10px solid var(--md-typeset-table-color)
+    display: block;
+    margin: 0em;
+    border: 10px solid var(--md-typeset-table-color);
   }
 
   img.story_pic_right {
-    display:block;
-    margin:0em;
-    border:10px solid var(--md-typeset-table-color)
+    display: block;
+    margin: 0em;
+    border: 10px solid var(--md-typeset-table-color);
   }
 
 }
