@@ -1,6 +1,16 @@
+---
+title: Equipment
+description: Equipment to buy or get in Chia Inventory
+date: 2022-07-21
+tags:
+  - Chia
+  - Game
+  - NFT
+---
+
+<div class="chia_rpg_story" markdown="1">
+
 # Equipment
-
-
 - <https://www.spacescan.io/xch/nft/collection/col16fpva26fhdjp2echs3cr7c30gzl7qe67hu9grtsjcqldz354asjsyzp6wx>
 
 <table markdown="1" class="item_table">
@@ -82,8 +92,4 @@ A simple shield made with tree barks. After the first fight, the unarmed adventu
 
 </table>
 
-
-
-
-
-
+</div>

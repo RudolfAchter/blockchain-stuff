@@ -41,6 +41,23 @@ img.game_item {
   width: 150px;
 }
 
+@font-face {
+  font-family: "8bitOperator";
+  src: url(../include/8_bit_Operator+_Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "8bitOperator";
+  src: url(../include/8_bit_Operator+_Bold.ttf);
+  font-weight: bold;
+}
+
+div.chia_rpg_story {
+  font-family: "8bitOperator";
+  font-size: 1em;
+}
+
 table.item_table{
   border-collapse: collapse;
   border: 1px solid var(--md-typeset-table-color)
@@ -57,4 +74,9 @@ table.item_table span{
   border: 2px solid var(--md-typeset-table-color);
   padding: 2px;
 
+}
+
+img.story_pic {
+  margin:0em 1em;
+  border:10px solid var(--md-typeset-table-color)
 }

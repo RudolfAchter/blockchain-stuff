@@ -1,3 +1,13 @@
+---
+title: Collectables
+description: Collectables in Chia Inventory Game
+date: 2022-07-21
+tags:
+  - Chia
+  - Game
+  - NFT
+---
+
 # Collectables
 
 - <https://www.spacescan.io/xch/nft/collection/col16fpva26fhdjp2echs3cr7c30gzl7qe67hu9grtsjcqldz354asjsyzp6wx>

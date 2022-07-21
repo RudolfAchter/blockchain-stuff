@@ -1,3 +1,13 @@
+---
+title: Chia Inventory RPG Game
+description: Introduction to Chia Inventory
+date: 2022-07-21
+tags:
+  - Chia
+  - Game
+  - NFT
+---
+
 # Chia Inventory RPG Game
 
 ## [Introduction](https://discordapp.com/channels/994949585657143296/995478713561001984/995479550848933930)
@@ -20,7 +30,7 @@ It is best to follow the game via the [Chia Inventory Discord Server](https://di
 This is the gaming loop so far:
 
 - [You buy weapons / equipment when it is released (original offers on dexie.space)](https://dexie.space/offers/col16fpva26fhdjp2echs3cr7c30gzl7qe67hu9grtsjcqldz354asjsyzp6wx/xch).
-    - [This are the weapon types you can get so far](items/equipment.md)
+    - [This are the weapon types you can get so far](items/01_equipment.md)
 - [A quest is announced (Discord or Twitter)](https://discordapp.com/channels/994949585657143296/995496698086432838)
 - [You register for the quest](https://discordapp.com/channels/994949585657143296/998007766297870416)
 

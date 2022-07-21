@@ -1,4 +1,0 @@
-# The Story 
-
-## The World
-
