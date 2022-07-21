@@ -87,19 +87,21 @@ img.story_pic {
 
 @media (max-width: 799px) {
   img {
-    max-width:90%;
+    max-width:100%;
   }
 
   img.story_pic_left {
     display: block;
     margin: 0em;
     border: 10px solid var(--md-typeset-table-color);
+    max-width:100%;
   }
 
   img.story_pic_right {
     display: block;
     margin: 0em;
     border: 10px solid var(--md-typeset-table-color);
+    max-width:100%;
   }
 
 }
@@ -108,13 +110,15 @@ img.story_pic {
   img.story_pic_left {
     margin:0em 1em 0em 0em;
     float: left;
-    border:10px solid var(--md-typeset-table-color)
+    border:10px solid var(--md-typeset-table-color);
+    max-width:400px;
   }
 
   img.story_pic_right {
     margin:0em 0em 0em 1em;
     float: right;
-    border:10px solid var(--md-typeset-table-color)
+    border:10px solid var(--md-typeset-table-color);
+    max-width:400px;
   }
 
 }
