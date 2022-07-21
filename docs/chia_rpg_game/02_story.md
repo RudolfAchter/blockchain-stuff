@@ -76,5 +76,8 @@ After a fierce battle, volunteers defeated a total of 20 Forest Slimes. Voluntee
 ![](https://cdn.discordapp.com/attachments/995945537603911770/999691045455540365/20.gif){class="story_pic_left" style="max-width:380px;"}
 After the fierce battle in the forest, some alert adventurers spotted strange creatures wandering. On closer inspection, they noticed that slimes took control of some deers. After careful attempts, they managed to tame and take the deers to a safe place.
 
+<hr style="clear:both">
+
 
 </div>
+
