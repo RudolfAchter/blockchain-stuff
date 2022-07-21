@@ -74,10 +74,8 @@ table.item_table td{
 }
 
 table.item_table span{
-
   border: 2px solid var(--md-typeset-table-color);
   padding: 2px;
-
 }
 
 
@@ -85,6 +83,10 @@ table.item_table span{
 @media (max-width: 799px) {
   img {
     max-width:100%;
+  }
+
+  img.game_item {
+    width: 100%;
   }
 
   img.story_pic {
@@ -105,6 +107,37 @@ table.item_table span{
     margin: 0em;
     border: 10px solid var(--md-typeset-table-color);
     max-width:100%;
+  }
+
+
+  table {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tbody {
+    display: table;
+  }
+  tr {
+    display: table-row-group;
+  }
+  td {
+    display: table-row;
+  }
+  td:before,
+  td > span {
+    display: table-cell;
+    padding: 7px 13px; /* optional */
+  }
+  td:before {
+    content: attr(data-label);
+  }
+
+  table.item_table span{
+    border: 2px solid var(--md-typeset-table-color);
+    padding: 2px;
+    display: inline;
   }
 
 }
