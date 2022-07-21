@@ -77,6 +77,18 @@ table.item_table span{
 }
 
 img.story_pic {
-  margin:0em 1em;
+  margin:0em;
+  border:10px solid var(--md-typeset-table-color)
+}
+
+img.story_pic_left {
+  margin:0em 1em 0em 0em;
+  float: left;
+  border:10px solid var(--md-typeset-table-color)
+}
+
+img.story_pic_right {
+  margin:0em 0em 0em 1em;
+  float: right;
   border:10px solid var(--md-typeset-table-color)
 }
