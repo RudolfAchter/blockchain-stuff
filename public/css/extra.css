@@ -85,7 +85,7 @@ img.story_pic {
   border:10px solid var(--md-typeset-table-color)
 }
 
-@media (min-width: 0) or (orientation:portrait) {
+@media (max-width: 799px){
   img.story_pic_left {
     display:block;
     margin:0em;
@@ -100,8 +100,7 @@ img.story_pic {
 
 }
 
-
-@media (min-width: 800px) or (orientation:landscape){
+@media (min-width: 800px) {
   img.story_pic_left {
     margin:0em 1em 0em 0em;
     float: left;
