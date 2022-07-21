@@ -10,7 +10,7 @@ tags:
 
 <div class="chia_rpg_story" markdown="1">
 
-# The Story 
+# The Story of Chiania
 
 ## The World
 
