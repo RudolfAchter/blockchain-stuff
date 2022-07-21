@@ -101,7 +101,7 @@ img.story_pic {
 }
 
 
-@media (min-width: 800px){
+@media (min-width: 800px) or (orientation:landscape){
   img.story_pic_left {
     margin:0em 1em 0em 0em;
     float: left;
