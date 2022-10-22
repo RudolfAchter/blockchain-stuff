@@ -18,8 +18,12 @@
 - [Chialisp](https://chialisp.com/docs/getting_started/intro_to_chialisp)
 - [ChiaLinks (for everything else)](https://chialinks.com/cats/)
 - [Chia Ecosystem](https://chialinks.com/assets/Chia_Ecosystem_Map_June_2022.pdf): Nice PDF with the most important names and links
+
+#### Chia NFTs
+
 - [Chia Friends Puzzle (the unsolved mystery 😀)](chia/chia_friends_puzzle/puzzle_findings.md)
 - [Chiania - Chia Inventory](https://rudolfachter.github.io/chiania/public/): I would say the worlds first NFTbMMORTAG **N**on **F**ugible **T**oken **b**ased **M**ass **M**ultiplayer **O**nline **R**ole**P**lay **T**ext **A**dventure **G**ame
+
 
 #### Chia Blockchain explorers
  

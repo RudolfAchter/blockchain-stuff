@@ -56,4 +56,9 @@ flowchart TD
 
 - https://youtu.be/RKNPyDGWIrM?t=24860
 
-We want to lock up the fonds. So that we cannot dump it. We can only pull out at a certain rate
+We want to lock up the fonds. So that we cannot dump it. We can only pull out at a certain rate.
+So Chia gives a promise on this. And i trust them.
+
+## This is to be minted as an NFT
+
+Because the prefarm is a probmise and it is something that is no subject to change i mint it as an NFT for the world 
