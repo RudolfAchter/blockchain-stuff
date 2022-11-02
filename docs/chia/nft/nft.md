@@ -71,7 +71,7 @@ Now comes the part the Quickstart documentation leaves out. In my Home environme
 - Your public IP is also determined (i think it tests against a web service or so)
 - Tries to open a port via UPNP
 
-now the security settings on my rounter dont allow UPNP per default. But instead of simply enabling UPNP i precisely open a port for this service
+now the security settings on my router dont allow UPNP per default. But instead of simply enabling UPNP i precisely open a port for this service
 
 i configured this snippet of `~/.ipfs/config`
 
