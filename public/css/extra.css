@@ -3,7 +3,7 @@
 }
 
 .md-grid {
-    max-width: 90%;
+    max-width: 100%;
 }
 
 .md-header__button.md-logo :-webkit-any(img,svg) {
@@ -35,4 +35,136 @@
 
 div.lightgallery {
   display: inline;
+}
+
+img.game_item {
+  width: 150px;
+}
+
+@font-face {
+  font-family: "8bitOperator";
+  src: url(../include/8_bit_Operator_Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "8bitOperator";
+  src: url(../include/8_bit_Operator_Bold.ttf);
+  font-weight: bold;
+}
+
+div.chia_rpg_story {
+  font-family: "8bitOperator";
+  font-size: 1em;
+}
+
+div.chia_rpg_story hr {
+  clear: both;
+}
+
+table.item_table{
+  border-collapse: collapse;
+  border: 1px solid var(--md-typeset-table-color)
+}
+
+table.item_table td{
+  min-width: 150px;
+  padding:10px;
+  border: 1px solid var(--md-typeset-table-color);
+}
+
+table.item_table span{
+  border: 2px solid var(--md-typeset-table-color);
+  padding: 2px;
+}
+
+
+
+@media (max-width: 799px) {
+  img {
+    max-width:100%;
+  }
+
+  img.game_item {
+    width: 100%;
+  }
+
+  img.story_pic {
+    margin:0em;
+    border:10px solid var(--md-typeset-table-color);
+    max-width:100%;
+  }
+
+  img.story_pic_left {
+    display: block;
+    margin: 0em;
+    border: 10px solid var(--md-typeset-table-color);
+    max-width:100%;
+  }
+
+  img.story_pic_right {
+    display: block;
+    margin: 0em;
+    border: 10px solid var(--md-typeset-table-color);
+    max-width:100%;
+  }
+
+
+  table {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tbody {
+    display: table;
+  }
+  tr {
+    display: table-row-group;
+  }
+  td {
+    display: table-row;
+    padding: 0px;
+  }
+  td:before,
+  td > span {
+    display: table-cell;
+  }
+  td:before {
+    content: attr(data-label);
+  }
+
+  table.item_table span{
+    border: 2px solid var(--md-typeset-table-color);
+    padding: 2px;
+    display: inline;
+  }
+
+  table.item_table td{
+    padding: 0px;
+  }
+
+}
+
+@media (min-width: 800px) {
+  img.story_pic {
+    margin:0em;
+    border:10px solid var(--md-typeset-table-color);
+    max-width:400px;
+  }
+
+  img.story_pic_left {
+    margin:0em 1em 0em 0em;
+    float: left;
+    border:10px solid var(--md-typeset-table-color);
+    max-width:400px;
+  }
+
+  img.story_pic_right {
+    margin:0em 0em 0em 1em;
+    float: right;
+    border:10px solid var(--md-typeset-table-color);
+    max-width:400px;
+  }
+
 }

@@ -1,0 +1,36 @@
+td {
+    vertical-align: top;
+    border: 1px solid black;
+    padding: 20px;
+}
+div.chia_friend {
+    float:left;
+    width:230px;
+    height:250px;
+    padding:20px;
+    font-size:12px;
+}
+
+div.chia_friend_transparent {
+    float:left;
+    width:230px;
+    height:250px;
+    padding:20px;
+    font-size:12px;
+}
+
+div.chia_friend_transparent img {
+    background-image: url(background_checkerboard.png)
+}
+
+div.friend_small { 
+    float:left;
+    width:130px;
+    height:150px;
+    padding:10px;
+    font-size:12px;
+}
+
+img {
+    margin: 5px;
+}
