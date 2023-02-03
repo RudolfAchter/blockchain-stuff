@@ -1,6 +1,32 @@
 # Chia Plotting with MadMax (2023 Version)
 
-This is my updated example for plotting with MadMax Plotter. Per Default it simply starts a "nice" Background process.
+This is provided **as is**. **No warranty**
+
+This is my updated example for plotting with [MadMax Plotter](https://github.com/madMAx43v3r/chia-plotter) on a machine with plenty of RAM (more than 110 GiB) on RamDisk. If you wanna go big you REALLY want the temporary stuff to be written in RAM. The final Plots then you write to `FINAL_DISK` which is the biggest and cheapest HDD you can find. If you have a different computer which you just temporary use for plotting it should be enough to just build and install MadMax instead of the whole Chia Full Node. You just need your Pool Contract Address and Farmer Public Key from your full Node. With just MadMax and your public keys you can even go plotting safely on your friends computer without revealing your wallet private Keys so they cannot control your Chia Wallet or your plot NFT.
+Please make sure to **not reveal any private keys** to anyone other than you! Do not install any private keys on computers that are not yours!
+
+If you haven't created a Chia Full Node and are not Member of a plotting Pool then first follow the guides from chia:
+
+- <https://docs.chia.net/introduction>
+- <https://github.com/Chia-Network/chia-blockchain/wiki/Pooling-User-Guide>
+
+My Script does the Plotting with MadMax Software on command line. But if you don't understand Chia Plotting first go with [Plotting Basics](https://docs.chia.net/plotting-basics) first to get the basics.
+
+To get your `POOL_CONTRACT_ADDRESS` and `FARMER_PUBLIC_KEY` do this on your Full Node:
+
+`POOL_CONTRACT_ADDRESS`
+
+```bash
+chia plotnft show | grep "Pool contract"
+```
+
+`FARMER_PUBLIC_KEY`
+
+```bash
+chia keys show | grep "Farmer public key"
+```
+
+Per Default it simply starts a "nice" Background process.
 If you want to run it in foreground use it with `plot.sh foreground`
 
 But First edit the File and **edit the configuration variables** on top to your needs.
